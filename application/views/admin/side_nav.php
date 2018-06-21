@@ -31,6 +31,13 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="bold "><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-assignment"></i>Contact Form</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li ><a href="<?php echo base_url('index.php/dashboard/contactForm') ; ?>" class="white-text">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     
                 </ul>
                 </li>
