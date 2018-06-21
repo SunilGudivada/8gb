@@ -9,7 +9,6 @@
                     <li class="bold "><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-note-add"></i>Define</a>
                         <div class="collapsible-body">
                             <ul>
-                               <!--  <li ><a href="<?php echo base_url('index.php/dashboard/global.php') ; ?>" class="white-text">Category</a></li> -->
                                 <li ><a href="<?php echo base_url('index.php/dashboard/subcategory') ; ?>" class="white-text">Sub Category</a></li>
 
                                 <li ><a href="<?php echo base_url('index.php/dashboard/user') ; ?>" class="white-text">User</a></li>
@@ -27,7 +26,7 @@
                     <li class="bold "><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-store"></i>ClassyAd</a>
                         <div class="collapsible-body">
                             <ul>
-                                <li ><a href="<?php echo base_url('index.php/dashboard/global.php') ; ?>" class="white-text">Advertisements</a></li>
+                                <li ><a href="<?php echo base_url('index.php/dashboard/advts/') ; ?>" class="white-text">Advertisements</a></li>
                             </ul>
                         </div>
                     </li>

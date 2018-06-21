@@ -51,4 +51,24 @@ class Dashboard extends CI_Controller {
  		$this->load->view('admin/post');
  	}
 
+ 	public function users(){
+ 		$this->load->model('User_model');
+ 		$data['user'] = $this->User_model->getDetails();
+ 		$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/user_disp',$data);
+ 		$this->load->view('admin/post');
+ 	}
+
+ 	public function advts(){
+ 		$this->load->model('Advertise_model');
+ 		$data['advertisements'] = $this->Advertise_model->getDetails();
+ 		$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/advertisements_disp',$data);
+ 		$this->load->view('admin/post');
+ 	}
+
  }

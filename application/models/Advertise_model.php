@@ -33,4 +33,32 @@ class Advertise_model extends CI_Model {
             $query=$this->db->query($sql);
             return $query;
         }
+
+        public function getDetails(){
+             $sql = "SELECT * from addata limit 50";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+         public function getDetailsById($id){
+             $sql = "SELECT * from addata where ad_id = $id ";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function archive($id){
+            $sql ="UPDATE addata set ad_action = 1 where ad_id = $id";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
+         public function unarchive($id){
+            $sql ="UPDATE addata set ad_action = 0 where ad_id = $id";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
     }

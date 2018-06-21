@@ -1,3 +1,24 @@
+<div class="row center modal" id="overlay">
+    <div class="preloader-wrapper small active">
+                      <div class="spinner-layer spinner-white-only">
+                        <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                          <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+     </div>
+                    <p class="center white-text">Please Wait</p>
+                    
+                    
+                    
+                    
+</div> 
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/materialize.min.js');?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/prism/prism.js');?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/prism/prism.js');?>"></script>
@@ -85,4 +106,17 @@
 
         TableManageButtons.init();
       });
+
+       $(document).ready(function(){
+            $(".dropdown-content.select-dropdown li").on( "click", function() {
+                var that = this;
+                setTimeout(function(){
+                if($(that).parent().hasClass('active')){
+                        $(that).parent().removeClass('active');
+                        $(that).parent().hide();
+                }
+                },100);
+            });
+        });
     </script>
+
