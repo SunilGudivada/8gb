@@ -70,4 +70,57 @@ class Advts extends CI_Controller {
 		}
 	}
 
+	public function edit($i){
+		$this->load->model('Advertise_model');
+		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+		$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/advertisements_ind_disp',$data);
+ 		$this->load->view('admin/post');
+	}
+
+	public function update($i){
+
+		$this->load->model('Advertise_model');
+		
+		$startdate = $this->input->post('startdate');
+		$enddate = $this->input->post('enddate');
+		$memplan = $this->input->post('memplan');
+
+		if($startdate == ''){
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+
+		if($enddate == ''){
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+
+		if($memplan == ''){
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+
+		$data = $this->Advertise_model->updateById($i,$startdate,$enddate,$memplan);
+		if($data){
+			$status = 'success';
+ 			$desc = 'Advertisement Updated.';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc,)));
+		}else{
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+	}
+
 }

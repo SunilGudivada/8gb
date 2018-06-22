@@ -55,10 +55,18 @@ class Advertise_model extends CI_Model {
             return true;
         }
 
-         public function unarchive($id){
+        public function unarchive($id){
             $sql ="UPDATE addata set ad_action = 0 where ad_id = $id";
             $this->load->database();
             $this->db->query($sql);
             return true;
         }
+
+        public function updateById($i,$startdate,$enddate,$memplan){
+            $sql = "UPDATE addata set ad_starttime = '$startdate' , ad_endtime='$enddate' , ad_type = '$memplan' where ad_id=$i";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
     }
