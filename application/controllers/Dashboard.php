@@ -97,16 +97,16 @@ class Dashboard extends CI_Controller {
 
  	}
 
- 	public function upload(){
- 		$error = array('error' => '');;
+ 	public function upload($i){
+ 		$data = array('error' => '','advt_id'=>$i);;
  		$this->load->view('admin/pre');
  		$this->load->view('admin/header');
  		$this->load->view('admin/side_nav');
- 		$this->load->view('admin/fileupload',$error);
+ 		$this->load->view('admin/fileupload',$data);
  		$this->load->view('admin/post');
  	}
 
- 	public function do_upload()
+ 	public function do_upload($i)
     {
         $config['upload_path']          = './assets/images/upload/';
         $config['allowed_types']        = 'gif|jpg|png';
@@ -118,39 +118,38 @@ class Dashboard extends CI_Controller {
 
         if ( ! $this->upload->do_upload('userfile'))
         {
-                $error = array('error' => $this->upload->display_errors());
-
-        $this->load->view('admin/pre');
- 		$this->load->view('admin/header');
- 		$this->load->view('admin/side_nav');
- 		$this->load->view('admin/fileupload',$error);
- 		$this->load->view('admin/post');
+            $error = array('error' => $this->upload->display_errors());
+	        $this->load->view('admin/pre');
+	 		$this->load->view('admin/header');
+	 		$this->load->view('admin/side_nav');
+	 		$this->load->view('admin/fileupload',$error);
+	 		$this->load->view('admin/post');
         }
         else
         {
-                $data = array('upload_data' => $this->upload->data());
-                $imageName= $data['upload_data']['file_name'];
-                 $this->load->model('Upload_model');
-                 $this->Upload_model->addImage($imageName,1);
+            $data = array('upload_data' => $this->upload->data(),'advt_id'=>$i);
+            $imageName= $data['upload_data']['file_name'];
+            $this->load->model('Upload_model');
+            $this->Upload_model->addImage($imageName,1,$i);
 
-                 $this->load->library('image_lib');
-		 		$config['image_library'] = 'gd2';
+            $this->load->library('image_lib');
+	 		$config['image_library'] = 'gd2';
 
 
-		 		$config['source_image'] = './assets/images/upload/'.$imageName;
-				$this->load->library('image_lib');
-			    $config['new_image'] = './assets/images/upload/'.$imageName;
-			    $config['wm_overlay_path'] = './assets/images/watermark.png';
+	 		$config['source_image'] = './assets/images/upload/'.$imageName;
+			$this->load->library('image_lib');
+		    $config['new_image'] = './assets/images/upload/'.$imageName;
+		    $config['wm_overlay_path'] = './assets/images/watermark.png';
 
-			    $config['wm_type'] = 'overlay';
-			    //the overlay image
-			    $config['wm_opacity'] = 90;
-			    $config['wm_vrt_alignment'] = 'bottom';
-			    $config['wm_hor_alignment'] = 'right';
-			    $this->image_lib->initialize($config);
+		    $config['wm_type'] = 'overlay';
+		    //the overlay image
+		    $config['wm_opacity'] = 90;
+		    $config['wm_vrt_alignment'] = 'bottom';
+		    $config['wm_hor_alignment'] = 'right';
+		    $this->image_lib->initialize($config);
 
-			    $this->image_lib->watermark();
-                $this->load->view('admin/upload_success', $data);
+		    $this->image_lib->watermark();
+		    header("Location:".base_url('index.php/advts/view/').$i);
         }
 
       }

@@ -69,4 +69,18 @@ class Advertise_model extends CI_Model {
             return true;
         }
 
+        public function getImageIds($i){
+            $sql = "SELECT * from image where advt_id = $i and status = 0";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function deleteImage($i){
+            $sql = "UPDATE image set status= 1 where img_value = '$i'";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
     }

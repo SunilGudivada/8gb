@@ -47,6 +47,7 @@ class Advts extends CI_Controller {
 	public function view($i){
 		$this->load->model('Advertise_model');
  		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+ 		$data['images'] = $this->Advertise_model->getImageIds($i);
  		$this->load->view('admin/pre');
  		$this->load->view('admin/header');
  		$this->load->view('admin/side_nav');
@@ -110,6 +111,23 @@ class Advts extends CI_Controller {
 		}
 
 		$data = $this->Advertise_model->updateById($i,$startdate,$enddate,$memplan);
+		if($data){
+			$status = 'success';
+ 			$desc = 'Advertisement Updated.';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc,)));
+		}else{
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+	}
+
+	public function removeImg(){
+		$imgadd = $this->input->post('imgval');
+		$this->load->model('Advertise_model');
+		$data = $this->Advertise_model->deleteImage($imgadd);
 		if($data){
 			$status = 'success';
  			$desc = 'Advertisement Updated.';

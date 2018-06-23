@@ -8,7 +8,7 @@
 
 
 			<div class="flow-text">File Upload</div><br>
-<?php echo form_open_multipart('dashboard/do_upload');?>
+<?php echo form_open_multipart('dashboard/do_upload/'.$advt_id);?>
 <input type="file" id="input-file-max-fs"  name="userfile" class="dropify" data-max-file-size="2M" />
 <br /><br />
 

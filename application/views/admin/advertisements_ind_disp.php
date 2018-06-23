@@ -4,50 +4,77 @@
 	<div class="row">
 		<div class="card">
 	<?php $id=0; foreach ($advertisements->result() as $row):$id = $row->ad_id;?>	
-		<div class="col s6"><br>
-			<div class="card-image">
-				<img src="<?php echo base_url('assets/images/gallary/4.jpg');?>" id="1_img" class="multiple-images">
-				<img src="<?php echo base_url('assets/images/gallary/5.jpg');?>" id="2_img" class="hide multiple-images">
-				<img src="<?php echo base_url('assets/images/gallary/6.jpg');?>" id="3_img" class="hide multiple-images">
-				<img src="<?php echo base_url('assets/images/gallary/7.jpg');?>" id="4_img" class="hide multiple-images">
-				<img src="<?php echo base_url('assets/images/gallary/8.jpg');?>" id="5_img" class="hide multiple-images">
-			</div><br>
+		<div class="col s12 m6 l6"><br>
+			<div class="card-image waves-effect waves-light">
+				<?php $j=0;foreach ($images->result() as $image):$j++;?> 
+				<img src="<?php echo base_url('assets/images/upload/'.$image->img_value);?>" id="<?php echo $j;?>_img" class="multiple-images <?php if($j>1):echo 'hide';endif;?>">
+				<?php endforeach;?>
+			</div><br><br>
 			
 			<div class="row">
-				<div class="col s2">
-					<img src="<?php echo base_url('assets/images/gallary/4.jpg');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="1">
+				<div class="masonry-gallery-wrapper">                
+                <div class="popup-gallery">
+				<?php $j=0;foreach ($images->result() as $image):$j++;?> 
+				<div class="col s2 small-image" data-image="<?php echo $j;?>">
+					
+					<div class="right color white-text waves-effect waves-light tooltipped  <?php echo $j ?>_x remove" data-imgvalue="<?php echo $image->img_value;?>" data-position="right" data-delay="50" data-tooltip="Remove" style="border-radius:5px;cursor:pointer;position:relative;top:0px;opacity:0"><b>&nbsp x &nbsp</b></div>
+
+					<div class="waves-effect waves-light">
+					<img src="<?php echo base_url('assets/images/upload/'.$image->img_value);?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="<?php echo $j;?>"></div>
 				</div>	
-				<div class="col s2">
-					<img src="<?php echo base_url('assets/images/gallary/5.jpg');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="2">
+				<?php endforeach;?>
+				<div class="col s2 small-image tooltipped" data-position="bottom" data-delay="100" data-tooltip="Add Image">
+					<div class="right color white-text waves-effect waves-light " style="border-radius:5px;cursor:pointer;position:relative;top:0px;opacity:0"><b>&nbsp x &nbsp</b></div>
+
+					<a href="<?php echo base_url('index.php/dashboard/upload/').$id;?>"> <div class="waves-effect waves-light">
+					<img src="<?php echo base_url('assets/images/add.png');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign"></div></a>
 				</div>	
-				<div class="col s2">
-					<img src="<?php echo base_url('assets/images/gallary/6.jpg');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="3">
-				</div>	
-				<div class="col s2">
-					<img src="<?php echo base_url('assets/images/gallary/7.jpg');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="4">
-				</div>	
-				<div class="col s2">
-					<img src="<?php echo base_url('assets/images/gallary/8.jpg');?>" style="width:10vh;height:10vh;" alt="" class="circle responsive-img valign multiple-images-mock" data-image="5">
-				</div>	
+			</div>
+		</div>
+				
 			</div><br>
 			<script>
 				$(document).ready(function(){
+					setTimeout(function(){
 					$('.multiple-images-mock').css('cursor','pointer');
 					
+					$('.remove').click(function(){
+						var data = $(this).data('imgvalue');
+
+						$.post("<?php echo base_url('index.php/advts/removeImg');?>","imgval="+data,function(msg){
+							if(msg.status == 'success'){
+					 			Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "green");
+					 			location.reload();	 
+							}else{
+								Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "red");
+							}
+						});
+					});
+
+					$('.small-image').hover(function(){
+					   var imgsrc = $(this).data('image');
+					   $('.'+imgsrc+'_x').css('opacity',1);
+					},function(){
+					   var imgsrc = $(this).data('image');
+					   $('.'+imgsrc+'_x').css('opacity',0);
+					});
+
 					$('.multiple-images-mock').click(function(){
 
 						var imgsrc = $(this).data('image');
 						$('.multiple-images').addClass('hide');
 						$('#'+imgsrc+'_img').removeClass('hide');
 					});
+				},1000);
 
 				});
 			</script>
-			<div class="divider"></div><br>
+
+
 			
 		</div>
 
-		<div class="col s6">
+		<div class="col s12 m6 l6">
 			<div class="card-content">
 				<div class=" col s11">
 					<?php if($row->ad_action == 0):?>
