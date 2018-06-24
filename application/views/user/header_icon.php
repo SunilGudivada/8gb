@@ -6,7 +6,7 @@
                         <ul class="left">
                             <li>
                                 <h1 class="logo-wrapper">
-				                    <a href="" class="brand-logo darken-1">
+				                    <a href="<?php echo base_url('');?>" class="brand-logo darken-1">
 				                    	8GB<!-- <img alt="8GB" style="height: 40px;width: 40px;max-width: 80px;max-height: 300px;" class=''> -->
 				                    </a> 
                 				</h1>

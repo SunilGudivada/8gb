@@ -212,4 +212,8 @@ class Auth extends CI_Controller {
 	    	die(json_encode(array('status'=>$status,'desc' => $desc,'email'=> $email)));
 		}
  	}
+
+ 	public function logout(){
+ 		$this->load->view('logout');
+ 	}
  }

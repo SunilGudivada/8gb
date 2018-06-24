@@ -11,7 +11,7 @@
                         <ul class="left">
                             <li>
                                 <h1 class="logo-wrapper">
-				                    <a href="" class="brand-logo darken-1">
+				                    <a href="<?php echo base_url('');?>" class="brand-logo darken-1">
 				                    	8GB<!-- <img alt="8GB" style="height: 40px;width: 40px;max-width: 80px;max-height: 300px;" class=''> -->
 				                    </a> 
                 				</h1>
@@ -31,13 +31,13 @@
 
                         <?php endif;?>
 
-                        <?php if($this->session->userdata('type') != 'user' && $this->session->userdata('type') == 'admin'):?>
+                        <?php if($this->session->userdata('type') == 'admin'):?>
 
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light">Dashboard</a></li>
+                        <li><a href="<?php  echo base_url('index.php/Dashboard');?>" class="waves-effect waves-block waves-light">Dashboard</a></li>
 
                         <?php endif;?>
 
-                        <li><a href="<?php echo base_url('index.php/advertise');?>" class="waves-effect waves-block waves-light" >Advertise</a>
+                        <li><a href="<?php echo base_url('index.php/advts');?>" class="waves-effect waves-block waves-light" >Advertise</a>
                         </li>
                         
 
@@ -57,10 +57,7 @@
                         <a href="#!"><span class="">My Profile</span></a>
                       </li>
                       <li>
-                        <a href="#!"><span class="">Notifications</span></a>
-                      </li>
-                      <li>
-                        <a href="#!"><span class="">Logout</span></a>
+                        <a href="<?php echo base_url('index.php/auth/logout');?>"><span class="">Logout</span></a>
                       </li>
                       
                     </ul>

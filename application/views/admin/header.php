@@ -11,7 +11,7 @@
                         <ul class="left">
                             <li>
                                 <h1 class="logo-wrapper">
-				                    <a href="" class="brand-logo darken-1">
+				                    <a href="<?php echo base_url('indexphp/Dashboard');?>" class="brand-logo darken-1">
 				                    	8GB<!-- <img alt="8GB" style="height: 40px;width: 40px;max-width: 80px;max-height: 300px;" class=''> -->
 				                    </a> 
                 				</h1>
@@ -49,14 +49,9 @@
                     </ul>
 
                     <ul id="auth-dropdown" class="dropdown-content ultra-small">
+                      
                       <li>
-                        <a href="#!"><span class="">My Profile</span></a>
-                      </li>
-                      <li>
-                        <a href="#!"><span class="">Notifications</span></a>
-                      </li>
-                      <li>
-                        <a href="#!"><span class="">Logout</span></a>
+                        <a href="<?php echo base_url('index.php/auth/logout');?>"><span class="">Logout</span></a>
                       </li>
                       
                     </ul>

@@ -16,12 +16,12 @@ class Advts extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('user/Pre.php');
+		$this->load->view('user/pre.php');
 		$this->load->view('user/header_icon.php');	
 		$this->load->view('user/advertise.php');	
 		// $this->load->view('user/featured_ad.php');	
 		$this->load->view('user/footer.php');
-		$this->load->view('user/Post.php');
+		$this->load->view('user/post.php');
 	}
 
 	public function add(){
@@ -39,9 +39,9 @@ class Advts extends CI_Controller {
 	}
 	public function success()
 	{
-		$this->load->view('user/Pre.php');
+		$this->load->view('user/pre.php');
 		$this->load->view('user/header_icon.php');	
-		$this->load->view('user/Post.php');
+		$this->load->view('user/post.php');
 	}
 
 	public function view($i){
