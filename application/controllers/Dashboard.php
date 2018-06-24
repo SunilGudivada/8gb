@@ -10,9 +10,9 @@ class Dashboard extends CI_Controller {
 		$this->load->library('session'); 
 		$this->load->helper(array('form', 'url'));
 
-		// if($this->session->type!= 'admin' ){
-		// 	header('Location:'.base_url(''));
-		// }
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
+		}
  	}
 
  	public function index(){
@@ -139,27 +139,39 @@ class Dashboard extends CI_Controller {
 	 		$config['source_image'] = './assets/images/upload/'.$imageName;
 			$this->load->library('image_lib');
 		    $config['new_image'] = './assets/images/upload/'.$imageName;
-		    $config['wm_overlay_path'] = './assets/images/watermark.png';
-
+		    $config['wm_overlay_path'] = './assets/images/logo_wm.png';
+		    $config['maintain_ratio']= TRUE;
+		    $config['width'] = 480;
+		    $config['width'] = 360;
 		    $config['wm_type'] = 'overlay';
 		    //the overlay image
-		    $config['wm_opacity'] = 90;
-		    $config['wm_vrt_alignment'] = 'bottom';
-		    $config['wm_hor_alignment'] = 'right';
+		    $config['wm_opacity'] = 40;
+		    $this->image_lib->clear();
 		    $this->image_lib->initialize($config);
-
+		    $this->image_lib->resize();
 		    $this->image_lib->watermark();
 		    header("Location:".base_url('index.php/advts/view/').$i);
         }
 
       }
 
-      public function gallary(){
+    public function gallary(){
       	$this->load->view('admin/pre');
  		$this->load->view('admin/header');
  		$this->load->view('admin/side_nav');
  		$this->load->view('admin/gallary');
  		$this->load->view('admin/post');
-      }
+    }
 
+    public function memplan(){
+
+    	$this->load->model('Memplan_model');
+    	$data['memplan'] = $this->Memplan_model->getDetails();
+
+    	$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/memplan_disp',$data);
+ 		$this->load->view('admin/post');
+    }
  }

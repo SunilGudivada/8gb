@@ -43,37 +43,37 @@
 	        <div class="input-field col s8">
                          
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="motor">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="1">
                                 <img src="<?php echo base_url('assets/images/icons/motor_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
                          
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="classifieds">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="2">
                                 <img src="<?php echo base_url('assets/images/icons/classifieds_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
                           
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_rent">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="3">
                                 <img src="<?php echo base_url('assets/images/icons/p_rent_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_sale">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="4">
                                 <img src="<?php echo base_url('assets/images/icons/p_sale_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="jobs">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="5">
                                 <img src="<?php echo base_url('assets/images/icons/jobs_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
                           
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="community">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="6">
                                 <img src="<?php echo base_url('assets/images/icons/community_big.PNG');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
@@ -109,6 +109,8 @@
 	$(document).ready(function(){
 	
 	$("#loader").hide();
+	
+		category_input = '';
 
 	$(".input-category").click(function(){
 

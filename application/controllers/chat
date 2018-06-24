@@ -1,0 +1,260 @@
+SUNIL (2:30 PM):
+give me a minute
+LAPI (2:30 PM):
+ok
+How to open Admin
+SUNIL (2:31 PM):
+dashboard
+LAPI (2:31 PM):
+ok
+Under Dashboard Tab need to give summery
+like
+
+No of Users,
+NO of Ads
+no of Premium Ad
+no of expired ads
+like this
+iff any pls add
+SUNIL (2:33 PM):
+ok
+select ccategory
+SUNIL (2:36 PM):
+will check this issue
+LAPI (2:36 PM):
+ok
+SUNIL (2:36 PM):
+its working earlier 
+unit testing also done earlier
+SUNIL (2:41 PM):
+working
+LAPI (2:41 PM):
+ok
+LAPI (2:43 PM):
+ok
+canot understand contact form 
+SUNIL (2:45 PM):
+dummy content
+you have asked for contact form right in user side
+LAPI (2:45 PM):
+ok
+There is no alternation in days
+SUNIL (2:47 PM):
+okay
+LAPI (2:47 PM):
+like it needs
+
+Free
+
+No of days
+
+Description
+SUNIL (2:48 PM):
+didn't get you
+LAPI (2:48 PM):
+To add a membership plan It needs three things
+
+1. Plan Type
+2. Validity in days
+3. Description
+Validity is missing here
+SUNIL (2:49 PM):
+all this will reflect here 
+wait let me show
+LAPI (2:49 PM):
+Copun code generate and tag to user . 
+SUNIL (2:50 PM):
+all those things will reflect here 
+LAPI (2:50 PM):
+
+
+SUNIL (2:50 PM):
+?
+LAPI (2:51 PM):
+1. copun code 
+2. Expiry date
+SUNIL (2:51 PM):
+coupon code is extra feature will add a=later
+LAPI (2:51 PM):
+yes an extra
+in devlopement its easy to implement na
+dont worry i will pay some more for this
+How to post an ad
+SUNIL (2:54 PM):
+this way it will select plan and redirect to payment gateway once 
+updated in server
+LAPI (2:54 PM):
+ok
+but for Free plan
+if i select FRee then
+SUNIL (2:55 PM):
+for free plan also it will go to payment gate way with 0 charges
+LAPI (2:55 PM):
+logic ll diferent for free
+for FREE it will direct go to step-3 with Zero
+and allow to Add new Advertisement
+SUNIL (2:56 PM):
+i have seen few websites where it redirect to payment gateway with 0 charges
+that will be usefull for security reasons
+anyone can create a bot and add number of posts with free ass
+add
+LAPI (2:57 PM):
+exactly. but here after post an ad it will go for Admin approval and once admin approve then only it will show to public search
+SUNIL (2:57 PM):
+yes
+LAPI (2:58 PM):
+so make it like For FREE plan then it will direct go to step 3
+or next to payment gateway
+SUNIL (2:58 PM):
+anyway whether it is free or pais ad admin should approve
+LAPI (2:58 PM):
+yes
+SUNIL (2:59 PM):
+step 3 is confirmation message after payment
+LAPI (2:59 PM):
+then Where to Add Advertisement images
+SUNIL (3:00 PM):
+ that one i am currently working
+not yet completed
+i have shown in dashboard
+right ?
+see here
+LAPI (3:01 PM):
+its in admin na
+SUNIL (3:01 PM):
+yes, user part i am working 
+LAPI (3:01 PM):
+ohhk
+during post an AD it need to upload Images .
+SUNIL (3:02 PM):
+ noo after approval, he can add
+LAPI (3:03 PM):
+after approval an watermark of 8gb will overlap to user upload images
+SUNIL (3:03 PM):
+actually that involves a huge data, thats why
+yes
+LAPI (3:03 PM):
+he can after approval. but some security reason during post an ad user must upload images
+SUNIL (3:03 PM):
+when user uploads only, water mark will be uploaded
+LAPI (3:03 PM):
+ok
+SUNIL (3:04 PM):
+water mark code
+LAPI (3:04 PM):
+yeh
+watermark must be overlap in centerof images
+SUNIL (3:05 PM):
+okay send me overlaping imge 
+LAPI (3:05 PM):
+i will send
+LAPI (3:07 PM):
+can i make a search of an ad
+SUNIL (3:07 PM):
+no
+LAPI (3:07 PM):
+ohhhk
+SUNIL (3:07 PM):
+functionality not added
+finally how is the website ?
+LAPI (3:08 PM):
+good
+needs to devlope some more
+SUNIL (3:08 PM):
+can i expect the second payment
+?
+LAPI (3:08 PM):
+not now
+SUNIL (3:09 PM):
+50% completed na
+:P
+LAPI (3:09 PM):
+Post an Add with images and Re activate an expired ad etc
+:P
+dont worry i ll send on today
+ok
+SUNIL (3:10 PM):
+ookay
+reactivate plan 
+LAPI (3:10 PM):
+yes
+SUNIL (3:10 PM):
+you can do here
+LAPI (3:10 PM):
+no no 
+if i post an ad with free plan
+the ad will expiry after 7days
+SUNIL (3:11 PM):
+did n't get you 
+LAPI (3:11 PM):
+then suppose i want to again reactivate the ad with premium plan then i will upgarade in that ad post
+SUNIL (3:13 PM):
+you can cchange here
+LAPI (3:13 PM):
+1. Post an ad with FREE plan
+2. After 7 days it wiil expiry
+3. it wont searchable in search 
+4. suppose i want to upgrade a plan then 
+SUNIL (3:13 PM):
+as a user or as an admin ?
+LAPI (3:13 PM):
+it can done by using User dashboard
+as an user i need
+SUNIL (3:14 PM):
+yes. user part i have to do.
+LAPI (3:14 PM):
+in admin ok 
+yesss 
+SUNIL (3:14 PM):
+user will send a request agin 
+LAPI (3:14 PM):
+yeh
+SUNIL (3:14 PM):
+user part i have not done
+LAPI (3:14 PM):
+in admin the transaction details is not here
+SUNIL (3:15 PM):
+transaction details dashboard is provided by instamojo
+LAPI (3:15 PM):
+using membership plan who ll pay what it must be recoreded in admin panel under transcation details
+instamojo will generate  statement after 3 days
+SUNIL (3:16 PM):
+okay will try to integrate. never tried . i have to read the instamojo documentation
+LAPI (3:16 PM):
+so instantly we will generate from our admin adn we ll make a cross check
+its simple logic
+SUNIL (3:16 PM):
+okay
+that needs server thats why 
+can you send me filezilla credentials that would be easy for me 
+not required 
+wait 
+LAPI (3:18 PM):
+1. redirect to payment gateway
+2. If successful then store the amount and transactioon ID with User name & ID
+3. Store the same in database and reflect in admin
+SUNIL (3:18 PM):
+okay
+LAPI (3:18 PM):
+make a status of every transaction for cross check
+SUNIL (3:18 PM):
+okay 
+LAPI (3:18 PM):
+and display a card in dashboard as todays transaction
+ 
+SUNIL (3:19 PM):
+okay
+LAPI (3:20 PM):
+After post an Ad it will make Invoice and mail and download the same
+SUNIL (3:20 PM):
+yes
+all that requires server thats why i have not yet started
+LAPI (3:20 PM):
+in admin panel add GSTIN, and 18% with company details so that it will reflect in invoice
+you need server fto access and Database access ?
+i will generate and share asap
+SUNIL (3:21 PM):
+you have shared me cpanel credentials na
+i will update
+therre
+there ?

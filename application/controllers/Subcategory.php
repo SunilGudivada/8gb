@@ -20,8 +20,8 @@ class Subcategory extends CI_Controller {
  		$subcatName = $this->input->post('subcatname');
  		$catId = $this->input->post('catId');
 
- 		$subcatName = 'car';
- 		$catId = 1;
+ 		// $subcatName = 'car';
+ 		// $catId = 1;
 
  		if($subcatName == ''){
  			$status = 'failure';
@@ -32,7 +32,7 @@ class Subcategory extends CI_Controller {
 
  		if($catId == ''){
  			$status = 'failure';
- 			$desc = ' Sub Category Id should be filled';
+ 			$desc = ' Please click on Category image';
  			header('Content-Type: application/json');
 	    	die(json_encode(array('status'=>$status,'desc' => $desc,'subcategory'=>$subcatName)));
  		}
@@ -52,7 +52,7 @@ class Subcategory extends CI_Controller {
  		$catId = $i;
  		$data = $this->Subcategory_model->deletesubcat($i);
  		if($data){
- 			// header("location:".base_url('index.php/dashboard/subcategory'));
+ 			header("location:".base_url('index.php/dashboard/subcategory'));
  			$status = 'success';
  			$desc = 'Sub Category Deleted';
  			header('Content-Type: application/json');

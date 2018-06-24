@@ -62,8 +62,8 @@ class Advertise_model extends CI_Model {
             return true;
         }
 
-        public function updateById($i,$startdate,$enddate,$memplan){
-            $sql = "UPDATE addata set ad_starttime = '$startdate' , ad_endtime='$enddate' , ad_type = '$memplan' where ad_id=$i";
+        public function updateById($i,$startdate,$enddate,$memplan,$status){
+            $sql = "UPDATE addata set ad_starttime = '$startdate' , ad_endtime='$enddate' , ad_type = '$memplan' , ad_status = '$status' where ad_id=$i";
             $this->load->database();
             $this->db->query($sql);
             return true;

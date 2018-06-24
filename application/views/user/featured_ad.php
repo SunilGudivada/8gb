@@ -22,7 +22,7 @@ foreach($ads->result() as $row):
         <ul class="card-action-buttons">
             <li><a class="btn-floating waves-effect waves-light color activator"><i class="mdi-social-share"></i></a>
             </li>                            
-            <li><a class="btn-floating btn-large waves-effect waves-light red accent-4"><b><?php echo $row->ad_price;?></b></a>
+            <li><a class="btn-floating btn-large waves-effect waves-light red accent-4"><b>₹ <?php echo $row->ad_price;?></b></a>
             </li>
         </ul>
 

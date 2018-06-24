@@ -1,4 +1,9 @@
 <body>
+	<div id="loader-wrapper">
+        <div id="loader"></div>        
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
 	<header id="header" class="page-topbar ">
             <div class="navbar-fixed">
                 <nav class="navbar-color red accent-4">
@@ -30,16 +35,9 @@
 
                         <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light">Dashboard</a></li>
 
-                        <?php endif;?>
+                        <?php endif;?>                        
 
-                        <li><a href="<?php echo base_url('index.php/advertise');?>" class="waves-effect waves-block waves-light" >Advertise</a>
-                        </li>
-                        <?php if($this->session->type != 'user'):?>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo    base_url('assets/images/icons/auth.PNG');?>"></a>
-                            </li>
-                        <?php endif;?>
-
-                        <?php if($this->session->type == 'user'):?>
+                        <?php if($this->session->type == 'admin'):?>
                             <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text" data-activates="auth-dropdown">Welcome, Admin</a>
                             </li>
                             <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="more-dropdown">More</a>

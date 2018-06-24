@@ -19,7 +19,7 @@ class Advts extends CI_Controller {
 		$this->load->view('user/Pre.php');
 		$this->load->view('user/header_icon.php');	
 		$this->load->view('user/advertise.php');	
-		$this->load->view('user/featured_ad.php');	
+		// $this->load->view('user/featured_ad.php');	
 		$this->load->view('user/footer.php');
 		$this->load->view('user/Post.php');
 	}
@@ -45,89 +45,124 @@ class Advts extends CI_Controller {
 	}
 
 	public function view($i){
-		$this->load->model('Advertise_model');
- 		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
- 		$data['images'] = $this->Advertise_model->getImageIds($i);
- 		$this->load->view('admin/pre');
- 		$this->load->view('admin/header');
- 		$this->load->view('admin/side_nav');
- 		$this->load->view('admin/advertisements_ind_disp',$data);
- 		$this->load->view('admin/post');
+
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
+		}else{
+			$this->load->model('Advertise_model');
+	 		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+	 		$data['images'] = $this->Advertise_model->getImageIds($i);
+	 		$this->load->view('admin/pre');
+	 		$this->load->view('admin/header');
+	 		$this->load->view('admin/side_nav');
+	 		$this->load->view('admin/advertisements_ind_disp',$data);
+	 		$this->load->view('admin/post');
+ 		}
 	}
 
 	public function archive ($i){
-		$this->load->model('Advertise_model');
-		$data = $this->Advertise_model->archive($i);
-		if($data){
-			header("location:".base_url('index.php/dashboard/advts'));
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
+		}else{
+			$this->load->model('Advertise_model');
+			$data = $this->Advertise_model->archive($i);
+			if($data){
+				header("location:".base_url('index.php/dashboard/advts'));
+			}
 		}
 	}
 
 	public function unarchive ($i){
-		$this->load->model('Advertise_model');
-		$data = $this->Advertise_model->unarchive($i);
-		if($data){
-			header("location:".base_url('index.php/dashboard/advts'));
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
+		}else{
+			$this->load->model('Advertise_model');
+			$data = $this->Advertise_model->unarchive($i);
+			if($data){
+				header("location:".base_url('index.php/dashboard/advts'));
+			}
 		}
 	}
 
 	public function edit($i){
-		$this->load->model('Advertise_model');
-		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
-		$this->load->view('admin/pre');
- 		$this->load->view('admin/header');
- 		$this->load->view('admin/side_nav');
- 		$this->load->view('admin/advertisements_ind_disp',$data);
- 		$this->load->view('admin/post');
+
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
+		}else{
+			$this->load->model('Advertise_model');
+			$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+			$data['images'] = $this->Advertise_model->getImageIds($i);
+			$this->load->view('admin/pre');
+	 		$this->load->view('admin/header');
+	 		$this->load->view('admin/side_nav');
+	 		$this->load->view('admin/advertisements_ind_edit',$data);
+	 		$this->load->view('admin/post');
+ 		}
 	}
 
 	public function update($i){
 
-		$this->load->model('Advertise_model');
-		
-		$startdate = $this->input->post('startdate');
-		$enddate = $this->input->post('enddate');
-		$memplan = $this->input->post('memplan');
-
-		if($startdate == ''){
-			$status = 'failure';
- 			$desc = 'Something Went Wrong';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
-		}
-
-		if($enddate == ''){
-			$status = 'failure';
- 			$desc = 'Something Went Wrong';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
-		}
-
-		if($memplan == ''){
-			$status = 'failure';
- 			$desc = 'Something Went Wrong';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
-		}
-
-		$data = $this->Advertise_model->updateById($i,$startdate,$enddate,$memplan);
-		if($data){
-			$status = 'success';
- 			$desc = 'Advertisement Updated.';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc,)));
+		if($this->session->type!= 'admin' ){
+			header('Location:'.base_url(''));
 		}else{
-			$status = 'failure';
- 			$desc = 'Something Went Wrong';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+
+			$this->load->model('Advertise_model');
+			
+			$startdate = $this->input->post('startdate');
+			$enddate = $this->input->post('enddate');
+			$memplan = $this->input->post('memplan');
+			$adstatus = $this->input->post('adstatus');
+
+			if($startdate == ''){
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
+
+			if($enddate == ''){
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
+
+			if($memplan == ''){
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
+
+			if($adstatus == ''){
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
+
+			$data = $this->Advertise_model->updateById($i,$startdate,$enddate,$memplan,$adstatus);
+			if($data){
+				$status = 'success';
+	 			$desc = 'Advertisement Updated.';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc,)));
+			}else{
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
 		}
 	}
 
 	public function removeImg(){
+
 		$imgadd = $this->input->post('imgval');
 		$this->load->model('Advertise_model');
+
 		$data = $this->Advertise_model->deleteImage($imgadd);
+
 		if($data){
 			$status = 'success';
  			$desc = 'Advertisement Updated.';

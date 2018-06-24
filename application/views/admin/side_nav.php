@@ -10,9 +10,6 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li ><a href="<?php echo base_url('index.php/dashboard/subcategory') ; ?>" class="white-text">Sub Category</a></li>
-
-                                <li ><a href="<?php echo base_url('index.php/dashboard/user') ; ?>" class="white-text">User</a></li>
-
                             </ul>
                         </div>
                     </li>
@@ -34,6 +31,13 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li ><a href="<?php echo base_url('index.php/dashboard/contactForm') ; ?>" class="white-text">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold "><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-image-filter-hdr"></i>Membership Plans</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li ><a href="<?php echo base_url('index.php/dashboard/memplan') ; ?>" class="white-text">View Plans</a></li>
                             </ul>
                         </div>
                     </li>
