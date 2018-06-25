@@ -56,25 +56,25 @@
                           
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="3">
-                                <img src="<?php echo base_url('assets/images/icons/p_rent_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/p_rent_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="4">
-                                <img src="<?php echo base_url('assets/images/icons/p_sale_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/p_sale_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="5">
-                                <img src="<?php echo base_url('assets/images/icons/jobs_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/jobs_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
                           
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="6">
-                                <img src="<?php echo base_url('assets/images/icons/community_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/community_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 

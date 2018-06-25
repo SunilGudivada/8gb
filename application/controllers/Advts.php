@@ -15,13 +15,17 @@ class Advts extends CI_Controller {
  	}
 
 	public function index()
-	{
-		$this->load->view('user/pre.php');
-		$this->load->view('user/header_icon.php');	
-		$this->load->view('user/advertise.php');	
-		// $this->load->view('user/featured_ad.php');	
-		$this->load->view('user/footer.php');
-		$this->load->view('user/post.php');
+	{	
+		if($this->session->type!= 'user' ){
+			header('Location:'.base_url(''));
+		}else{
+			$this->load->view('user/pre.php');
+			$this->load->view('user/header_icon.php');	
+			$this->load->view('user/advertise.php');	
+			// $this->load->view('user/featured_ad.php');	
+			$this->load->view('user/footer.php');
+			$this->load->view('user/post.php');
+		}
 	}
 
 	public function add(){
@@ -33,10 +37,24 @@ class Advts extends CI_Controller {
 		$adSubCat = $this->input->post('subcat');
 
 		$this->load->model('advertise_model');
+		$this->load->helper('string');
+		$tempid = random_string('alnum', 16);
 
-		$this->advertise_model->addData($adName,$adDesc,$adPrice,$adCat,$adSubCat,'free');
+		$data = $this->advertise_model->tempAddData($tempid,$adName,$adDesc,$adPrice,$adCat,$adSubCat);
 
+		if($data){
+				$status = 'success';
+	 			$desc = 'Data Validated. Please select Plan';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc,'tempid'=>$tempid)));
+			}else{
+				$status = 'failure';
+	 			$desc = 'Something Went Wrong';
+	 			header('Content-Type: application/json');
+		    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			}
 	}
+
 	public function success()
 	{
 		$this->load->view('user/pre.php');
@@ -110,6 +128,7 @@ class Advts extends CI_Controller {
 			
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
+			 
 			$memplan = $this->input->post('memplan');
 			$adstatus = $this->input->post('adstatus');
 
@@ -174,6 +193,35 @@ class Advts extends CI_Controller {
  			header('Content-Type: application/json');
 	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
 		}
+	}
+
+	public function payment($i,$j){
+		$this->load->model('Advertise_model');
+		$data = $this->Advertise_model->verifyIdPlan($i,$j);
+		if($data){
+			header('location:'.base_url('index.php/advts/cnfrmadvt/').$j);
+		}else{
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+	}
+
+	public function cnfrmadvt($i){
+		$this->load->model('Advertise_model');
+		$data['advertisement'] = $this->Advertise_model->getTempAdvtData($i);
+		$this->load->view('user/pre');
+ 		$this->load->view('user/header');
+ 		$this->load->view('user/advts_cnf_ind_disp',$data);
+ 		$this->load->view('user/post');
+	}
+
+	public function payRequest($i,$j){
+		$this->load->model('Advertise_model');
+		$data['info']=$this->Advertise_model->payRqstDetails($i);
+		$data['cost'] = $this->Advertise_model->getAmount($j);
+		$this->load->view('user/pay_rqst.php',$data);
 	}
 
 }

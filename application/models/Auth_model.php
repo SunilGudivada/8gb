@@ -30,7 +30,8 @@ class Auth_model extends CI_Model {
        	$result = $query->result_array();
        	if($data){
        		$this->session->id = $result[0]['id'] ;
-       		$this->session->email = $result[0]['email'] ;
+          $this->session->email = $result[0]['email'] ;
+          $this->session->name = $result[0]['firstname'].' '.$result[0]['middlename'].' '.$result[0]['lastname'] ;
           $this->session->type = 'user';
        	}
        	return $data;

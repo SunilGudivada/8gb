@@ -25,19 +25,19 @@
                         <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/classifieds.PNG');?>"></a>
                         </li>
 
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/p_rent.PNG');?>"></a>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/p_rent.png');?>"></a>
                         </li>
 
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/p_sale.PNG');?>"></a>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/p_sale.png');?>"></a>
                         </li>
 
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/jobs.PNG');?>"></a>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/jobs.png');?>"></a>
                         </li>
 
-                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/community.PNG');?>"></a>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo base_url('assets/images/icons/community.png');?>"></a>
                         </li>
                         <?php if($this->session->type != 'user'):?>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><img src="<?php echo    base_url('assets/images/icons/auth.PNG');?>"></a>
+                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light signin"><img src="<?php echo    base_url('assets/images/icons/auth.png');?>"></a>
                             </li>
                         <?php endif;?>
 

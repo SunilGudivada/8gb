@@ -85,4 +85,8 @@ class Memplan extends CI_Controller {
 		}
  	}
 
+ 	public function payment(){
+ 		
+ 	}
+
  }

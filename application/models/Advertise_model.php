@@ -7,24 +7,56 @@ class Advertise_model extends CI_Model {
             parent::__construct();
         }
 
-        public function addData($adname,$addesc,$adprice,$adcategory,$adsubcat,$adtype){
-        	
-        	if($adtype == 'free'){
-        		$adendtime = time() + 7*24*60*60;
-        	}else if($adtype =='professional'){
-        		$adendtime = time() + 30*24*60*60;
-        	}else if($adtype == 'premium'){
-        		$adendtime = time() + 90*24*60*60;
-        	}else{  
-        		$adendtime = time() - 9000*24*60*60;
-        	}
+        public function tempAddData($tempid,$adname,$addesc,$adprice,$adcategory,$adsubcat){
+            
+            // if($adtype == 'free'){
+            //  $adendtime = time() + 7*24*60*60;
+            // }else if($adtype =='professional'){
+            //  $adendtime = time() + 30*24*60*60;
+            // }else if($adtype == 'premium'){
+            //  $adendtime = time() + 90*24*60*60;
+            // }else{  
+            //  $adendtime = time() - 9000*24*60*60;
+            // }
 
-        	$adstarttime = time();
-        	$adstatus =0;
-        	$this->load->database();
-        	$query = "INSERT INTO addata (ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_starttime,ad_endtime,ad_type,ad_status) values('$adname','$addesc','$adprice','$adcategory','$adsubcat','$adstarttime','$adendtime','$adtype','$adstatus')";
-        	$this->db->query($query);
+            // $adstarttime = time();
+         //    $adendtime = '';
+            $adstatus =0;
+            $user_id = $this->session->id;
+            $this->load->database();
+            $query = "INSERT INTO tempaddata (ad_id,user_id,ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_status) values('$tempid',$user_id,'$adname','$addesc','$adprice','$adcategory','$adsubcat',$adstatus)";
+            $this->db->query($query);
+            return true;
 
+        }
+
+         public function addData($adname,$addesc,$adprice,$adcategory,$adsubcat,$adtype){
+            
+            // if($adtype == 'free'){
+            //  $adendtime = time() + 7*24*60*60;
+            // }else if($adtype =='professional'){
+            //  $adendtime = time() + 30*24*60*60;
+            // }else if($adtype == 'premium'){
+            //  $adendtime = time() + 90*24*60*60;
+            // }else{  
+            //  $adendtime = time() - 9000*24*60*60;
+            // }
+
+            // $adstarttime = time();
+         //    $adendtime = '';
+            $adstatus =0;
+            $this->load->database();
+            $query = "INSERT INTO tempaddata (ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_type,ad_status) values('$adname','$addesc','$adprice','$adcategory','$adsubcat','$adtype',$adstatus)";
+            $this->db->query($query);
+            return true;
+
+        }
+
+        public function verifyIdPlan($i,$j){
+            $sql = "UPDATE tempaddata set ad_type = '$i'where ad_id = '$j'";
+             $this->load->database();
+           $this->db->query($sql);
+            return true;
         }
 
         public function getData($type){
@@ -35,14 +67,21 @@ class Advertise_model extends CI_Model {
         }
 
         public function getDetails(){
-             $sql = "SELECT * from addata limit 50";
+             $sql = "SELECT * from addata";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
         }
 
-         public function getDetailsById($id){
+        public function getDetailsById($id){
              $sql = "SELECT * from addata where ad_id = $id ";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function getTempAdvtData($id){
+             $sql = "SELECT * from tempaddata where ad_id = '$id' ";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -81,6 +120,23 @@ class Advertise_model extends CI_Model {
             $this->load->database();
             $this->db->query($sql);
             return true;
+        }
+
+        public function payRqstDetails($i){
+            $sql = "SELECT * from tempaddata T join user U on U.id = T.user_id where T.ad_id = '$i'";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function getAmount($i){
+            $i = $i.'.cost';
+            $sql = "SELECT * from memplan where value = '$i'";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            foreach($query->result() as $row):
+                return $row->desp;
+            endforeach;
         }
 
     }

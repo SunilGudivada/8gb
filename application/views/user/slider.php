@@ -1,8 +1,8 @@
 <div class="container">
 
-            <div class="row" style="margin:0;">
+            <div class="row  hide-on-med-and-down" style="margin:0;" >
 
-                <div class="col s6" style="padding:0px;">
+                <div class="col s12 m6 l6" style="padding:0px;">
                 <div class="card small" style="max-width: 100%;max-height:100%">
                     <div class="card-image center waves-effect waves-light" style="max-height:100%;">
                       <div href="#" data-position="right" data-delay="50" data-tooltip=" Premium ClassyAd"class="btn-floating btn-small tooltipped flow-text but_type_list left green waves-effect waves-light ">
@@ -25,7 +25,7 @@
                 </div>
               </div>
 
-              <div class="col s6" style="padding:0px;">
+              <div class="col s12 m6 l6" style="padding:0px;">
                 <div class="card small" style="max-width: 100%;max-height:100%">
                     <div class="card-image center waves-effect waves-light" style="max-height:100%;">
                       <div href="#" data-position="right" data-delay="50" data-tooltip=" Premium ClassyAd"class="btn-floating btn-small tooltipped flow-text but_type_list left amber darken-3 waves-effect waves-light ">

@@ -10,6 +10,12 @@
     <title>8GB</title>
     <meta name="msapplication-TileColor" content="#d50000">
 
+<!--Andriod phone-->
+    <meta name="theme-color" content="#d50000" />
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#d50000">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#d50000">
     <link href="<?php echo base_url('assets/css/materialize.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/css/style.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/css/custom/custom.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">

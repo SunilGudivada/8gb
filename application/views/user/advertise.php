@@ -75,25 +75,25 @@
                           
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_rent">
-                                <img src="<?php echo base_url('assets/images/icons/p_rent_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/p_rent_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_sale">
-                                <img src="<?php echo base_url('assets/images/icons/p_sale_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/p_sale_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="jobs">
-                                <img src="<?php echo base_url('assets/images/icons/jobs_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/jobs_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
                           
                             <div class="col s2">
                               <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="community">
-                                <img src="<?php echo base_url('assets/images/icons/community_big.PNG');?>" style="width:100%;height:100%;">
+                                <img src="<?php echo base_url('assets/images/icons/community_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
@@ -181,7 +181,7 @@
                                 </ul>
                               </div>
                               <div class="card-action center-align">                      
-                                <button class="waves-effect waves-light light-blue btn">Select Plan</button>
+                                <button class="waves-effect waves-light light-blue btn-basic btn">Select Plan</button>
                               </div>
                             </div>
                           </article>
@@ -204,7 +204,7 @@
                                   </ul>
                                 </div>
                                 <div class="card-action center-align">                      
-                                  <button class="waves-effect waves-light light-blue btn">Select Plan</button>
+                                  <button class="waves-effect waves-light light-blue btn btn-professional">Select Plan</button>
                                 </div>
                               </div>
                             </article>
@@ -227,7 +227,7 @@
                                   </ul>
                                 </div>
                                 <div class="card-action center-align">                      
-                                  <button class="waves-effect waves-light light-blue btn">Select Plan</button>
+                                  <button class="waves-effect waves-light light-blue btn btn-premium">Select Plan</button>
                                 </div>
                               </div>
                             </article>
@@ -246,7 +246,7 @@
           <script type="text/javascript">
             $(document).ready(function(){
                 $(".sub-category").hide();
-                
+                var temp_id = '';
                 var category_input = 'motor';
                 $(".input-category").click(function(){
 
@@ -275,8 +275,13 @@
                     {
                        $("#step2").removeClass("disabled"), $("ul.tabs").tabs(), $("ul.tabs").tabs("select_tab", "step2");
                        var str = "adname="+adName+"&desc="+adDesc + "&price=" + adPrice + "&cat=" + adCat + "&subcat="+adSubcat;
-                       $.post('<?php echo base_url("index.php/advertise/add/");?>',str,function(msg){
-                      Materialize.toast('<span class="white-text">Data validated, and Added.</span>', 5e3, "green");
+                       $.post('<?php echo base_url("index.php/advts/add/");?>',str,function(msg){
+                        if(msg.status == 'success'){
+                          temp_id = msg.tempid;
+                          Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "green");
+                          }else{
+                            Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "red");
+                          }
                        }
 
                         );
@@ -300,12 +305,21 @@
                   var cat = category_input;
                   var sub_cat = $("input[name="+category_input+"]:checked").val();
                    var str = "adname="+adname+"&desc="+desc + "&price=" + price + "&cat=" + cat + "&subcat="+sub_cat;
-                       $.post('<?php echo base_url("index.php/advertise/add/");?>',str,function(msg){
-                        console.log(msg);
-                       })
+                      
                   validate_details(adname,price,desc,cat,sub_cat);
                 });
 
+                $('.btn-basic').click(function (){
+                  location.href= '<?php echo base_url('index.php/advts/payment/free/');?>'+temp_id;
+                });
+
+                $('.btn-professional').click(function (){
+                  location.href= '<?php echo base_url('index.php/advts/payment/professional/');?>'+temp_id;
+                })
+
+                $('.btn-premium').click(function (){
+                  location.href= '<?php echo base_url('index.php/advts/payment/premium/');?>'+temp_id;
+                })
 
               });
           </script>
