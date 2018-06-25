@@ -55,12 +55,7 @@ class Advts extends CI_Controller {
 			}
 	}
 
-	public function success()
-	{
-		$this->load->view('user/pre.php');
-		$this->load->view('user/header_icon.php');	
-		$this->load->view('user/post.php');
-	}
+	
 
 	public function view($i){
 
@@ -221,7 +216,47 @@ class Advts extends CI_Controller {
 		$this->load->model('Advertise_model');
 		$data['info']=$this->Advertise_model->payRqstDetails($i);
 		$data['cost'] = $this->Advertise_model->getAmount($j);
+		$this->load->view('user/pre');
 		$this->load->view('user/pay_rqst.php',$data);
 	}
 
+	public function transaction(){
+		$a = $this->input->post('a');
+		$b = $this->input->post('b');
+		$c = $this->input->post('c');
+		$d = $this->input->post('d');
+		$this->load->model('Advertise_model');
+
+		$data = $this->Advertise_model->addTransactionDetails($a,$b,$c,$d);
+		if($data){
+			$status = 'success';
+ 			$desc = 'added succesfully';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));		}else{
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+	}
+
+	public function success(){
+		$pId = $_GET['payment_id'];
+		$prId = $_GET['payment_request_id'];
+		$this->load->model('Advertise_model');
+		$data = $this->Advertise_model->UpdateTransactionDetails($pId,$prId);
+	
+	if($data){
+			$status = 'success';
+ 			$desc = 'Payment succesfully added';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}else{
+			$status = 'failure';
+ 			$desc = 'Something Went Wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+
+}
 }

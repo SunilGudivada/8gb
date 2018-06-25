@@ -139,4 +139,18 @@ class Advertise_model extends CI_Model {
             endforeach;
         }
 
+        public function addTransactionDetails($a,$b,$c,$d){
+            $sql = "INSERT INTO transaction (t_ad_id,t_pay_rqst_id,t_amt,t_url)values('$a','$b','$c','$d')";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
+        public function UpdateTransactionDetails($pid,$prid){
+            $sql = "UPDATE transaction set t_payment_id = '$pid' where t_pay_rqst_id = '$prid'";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
     }
