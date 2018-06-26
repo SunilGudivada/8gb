@@ -44,6 +44,10 @@ foreach($ads->result() as $row):
         <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i><?php echo $row->ad_name;?></span>
             <p><?php echo $row->ad_desc;?></p>
+           <div class="sharethis-inline-share-buttons"></div>
+
+            
+
         </div>
     </div></div>
 

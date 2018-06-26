@@ -16,9 +16,19 @@ class Dashboard extends CI_Controller {
  	}
 
  	public function index(){
+ 		$this->load->model('Analytics_model');
+ 		$data['totalUsers'] = $this->Analytics_model->getTotalUsers();
+ 		$data['newSignUps'] = $this->Analytics_model->getNewSignUps();
+ 		$data['totalAdvertisments'] = $this->Analytics_model->getTotalAdvertisements();
+ 		$data['freeAdvertisements'] = $this->Analytics_model->getFreeAdvertisements();
+ 		$data['professionalAdvertisments'] = $this->Analytics_model->getProfessionalAdvertisements();
+ 		$data['premiumAdvertisements'] = $this->Analytics_model->getPremiumAdvertisements();
+ 		$data['totalRevenue'] = $this->Analytics_model->getTotalRevenue();
+ 		$data['todayRevenue'] = $this->Analytics_model->getTodayRevenue();
  		$this->load->view('admin/pre');
  		$this->load->view('admin/header');
  		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/home',$data);
  		$this->load->view('admin/post');
  	}
 
