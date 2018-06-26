@@ -41,6 +41,14 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="bold "><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-payment"></i>Transactions</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li ><a href="<?php echo base_url('index.php/dashboard/transactionsPaid') ; ?>" class="white-text">Paid Payments</a></li>
+                                <li ><a href="<?php echo base_url('index.php/dashboard/transactionsPending') ; ?>" class="white-text">Pending Payments</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     
                 </ul>
                 </li>

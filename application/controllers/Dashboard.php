@@ -174,4 +174,28 @@ class Dashboard extends CI_Controller {
  		$this->load->view('admin/memplan_disp',$data);
  		$this->load->view('admin/post');
     }
+
+    public function transactionsPaid(){
+
+    	$this->load->model('Transaction_model');
+    	$data['transactions'] = $this->Transaction_model->getDetailsPaid();
+
+    	$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/transactions_disp',$data);
+ 		$this->load->view('admin/post');
+    }
+
+    public function transactionsPending(){
+
+    	$this->load->model('Transaction_model');
+    	$data['transactions'] = $this->Transaction_model->getDetailsPending();
+
+    	$this->load->view('admin/pre');
+ 		$this->load->view('admin/header');
+ 		$this->load->view('admin/side_nav');
+ 		$this->load->view('admin/transactions_disp_pending',$data);
+ 		$this->load->view('admin/post');
+    }
  }
