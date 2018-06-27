@@ -66,6 +66,14 @@ class Advertise_model extends CI_Model {
             return $query;
         }
 
+        public function getMyData(){
+            $id = $this->session->id;
+            $sql = "SELECT * from addata where user_id ='$id'";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
         public function getDetails(){
              $sql = "SELECT * from addata";
             $this->load->database();
@@ -152,5 +160,33 @@ class Advertise_model extends CI_Model {
             $this->db->query($sql);
             return true;
         }
+
+        public function updateAddData($id,$adname,$addesc,$adprice,$adcategory,$adsubcat){
+            $sql = "UPDATE addata set ad_name = '$adname',ad_desc = '$addesc',ad_price = '$adprice',ad_cat = '$adcategory',ad_subcat = '$adsubcat' where ad_id = $id";
+            $this->load->database();
+            $this->db->query($sql);
+            return true;
+        }
+
+       public function getAdType($i){
+            $sql = "SELECT * from addata where ad_id = $i";
+            $this->load->database();
+            $query = $this->db->query($sql);
+            $type = '';
+            foreach ($query->result() as $row) {
+                $type = $row->ad_type;
+            }
+            return $type;
+       }
+
+       public function getMaxImageCount($type){
+            $i = $type.'.photos';
+            $sql = "SELECT * from memplan where value = '$i'";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            foreach($query->result() as $row):
+                return $row->desp;
+            endforeach;
+       }
 
     }

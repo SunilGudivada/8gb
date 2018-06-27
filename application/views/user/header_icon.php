@@ -42,13 +42,13 @@
                         <?php endif;?>
 
                         <?php if($this->session->type == 'user'):?>
-                            
+                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text flow-text" data-activates="auth-dropdown"><?php echo substr($this->session->email,0,1);?></a>
+                            </li>
 
                             <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="more-dropdown">More</a>
 
                             </li>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text" data-activates="auth-dropdown"><?php echo substr($this->session->email,0,1);?></a>
-                            </li>
+                            
                         <?php endif;?>
                          
                     </ul>
@@ -58,9 +58,6 @@
                         <a href="#!"><span class="">My Profile</span></a>
                       </li>
                       <li>
-                        <a href="#!"><span class="">Notifications</span></a>
-                      </li>
-                      <li>
                         <a href="#!"><span class="">Logout</span></a>
                       </li>
                       
@@ -68,13 +65,10 @@
 
                      <ul id="more-dropdown" class="dropdown-content ultra-small">
                       <li>
-                        <a href="<?php echo base_url('index.php/advertise');?>"><span class="">Advertise</span></a>
+                        <a href="<?php echo base_url('index.php/advts');?>"><span class="">Advertise</span></a>
                       </li>
                       <li>
                         <a href="#!"><span class="">24 * 7 Customer Care</span></a>
-                      </li>
-                      <li>
-                        <a href="#!"><span class="">Membership Plans</span></a>
                       </li>
                       
                     </ul>

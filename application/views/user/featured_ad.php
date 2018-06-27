@@ -29,16 +29,16 @@ foreach($ads->result() as $row):
         <div class="card-content">
             <p class="row">
               <span class="left"><a href=""><b><?php echo ucfirst($row->ad_cat);?></b></a></span>
-              <span class="right">18th June, 2015</span>
+              
             </p>
-            <h4 class="card-title grey-text text-darken-4"><a href="#" class="grey-text text-darken-4"><?php echo $row->ad_name;?></a>
+            <h4 class="card-title grey-text text-darken-4"><a href="<?php echo base_url('index.php/advts/view/').$row->ad_id; ?>" class="grey-text text-darken-4"><?php echo $row->ad_name;?></a>
             </h4>
             <p class="blog-post-content"><?php echo $row->ad_desc;?></p>
             <div class="row">
               <div class="col s2">
-                <img src="<?php echo base_url('assets/images/avatar.jpg');?>" alt="" class="circle responsive-img valign profile-image">
+                <img src="<?php echo base_url('assets/images/icon.png');?>" alt="" class="circle responsive-img valign profile-image">
               </div>
-              <div class="col s9"> <br> By <a href="#">John Doe</a></div>
+              <div class="col s9"> <br> By <a href="#">John Doe</a><br><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></div>
             </div>
         </div>
         <div class="card-reveal">

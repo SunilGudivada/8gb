@@ -59,6 +59,5 @@ class Subcategory extends CI_Controller {
 	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
  		}
 
-
  	}
  }

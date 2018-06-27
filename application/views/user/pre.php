@@ -25,9 +25,8 @@
     <link href="<?php echo base_url('assets/js/plugins/ion.rangeSlider/css/normalize.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/js/plugins/ion.rangeSlider/css/ion.rangeSlider.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/js/plugins/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css');?>" rel="stylesheet">
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.2.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.2.min.js');?>"></script>
 
-   <script src="//platform-api.sharethis.com/js/sharethis.js#property=5b327a723e2f6e001148ddd3&product=inline-share-buttons"></script>
     <style type="text/css">
     .category:hover{
         border-color: white;

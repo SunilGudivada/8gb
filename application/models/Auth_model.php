@@ -63,4 +63,22 @@ class Auth_model extends CI_Model {
 
     }
 
+    public function getUserDetails(){
+      $id = $this->session->id;
+      $sql = "SELECT * from user where id = '$id'";
+      $this->load->database();
+      $query = $this->db->query($sql);
+      return $query;
+    }
+
+    public function updateUserDetails($a,$b,$c,$d,$e){
+
+      $id = $this->session->id;
+      $sql = "UPDATE user set firstname = '$a',middlename = '$b', lastname = '$c', email = '$d', phone = '$e' where id = $id";
+      $this->load->database();
+      $this->db->query($sql);
+      return true;
+
+    }
+
 }
