@@ -55,7 +55,7 @@
 
                     <ul id="auth-dropdown" class="dropdown-content ultra-small">
                       <li>
-                        <a href="#!"><span class="">My Profile</span></a>
+                        <a href="<?php echo base_url('index.php/profile');?>"><span class="">My Profile</span></a>
                       </li>
                       <li>
                         <a href="#!"><span class="">Logout</span></a>

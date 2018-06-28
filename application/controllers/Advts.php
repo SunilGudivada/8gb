@@ -144,17 +144,17 @@ class Advts extends CI_Controller {
 
 		if($this->session->type== 'user' ){
 			
-			// $adName = $this->input->post('adname');
-			// $adDesc = $this->input->post('desc');
-			// $adPrice = $this->input->post('price');
-			// $adCat = $this->input->post('cat');
-			// $adSubCat = $this->input->post('subcat');
+			$adName = $this->input->post('adname');
+			$adDesc = $this->input->post('desc');
+			$adPrice = $this->input->post('price');
+			$adCat = $this->input->post('cat');
+			$adSubCat = $this->input->post('subcat');
 
-			$adName = 'Some Name';
-			$adDesc = 'Some Description';
-			$adPrice = 250;
-			$adCat = 'motor';
-			$adSubCat = 'house';
+			// $adName = 'Some Name';
+			// $adDesc = 'Some Description';
+			// $adPrice = 250;
+			// $adCat = 'motor';
+			// $adSubCat = 'house';
 
 
 

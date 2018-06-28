@@ -104,7 +104,19 @@ if($status==2):
 		    	</div>
 		    	<br>
      
-<a class="green right update" style="color:white;padding:5px;border-radius:3px;" href="#!">Update <i class="mdi-content-send"></i> </a><br>
+<a class="green right update" style="color:white;padding:5px;border-radius:3px;" href="#!">Update <i class="mdi-content-send"></i> </a><div class="preloader-wrapper small active right loader">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div><br>
 
             <div id="step1" class="col s12 color-text">
 
@@ -117,7 +129,7 @@ if($status==2):
 	                      <option value="" disabled>Category</option>
 	                      <option value="motor" <?php if($row->ad_cat == 'motor'): echo 'selected';endif;?>>Motor</option>
 	                      <option value="classifieds" <?php if($row->ad_cat == 'classifieds'): echo 'selected';endif;?>>Classifieds</option>
-	                      <option value="rent" <?php if($row->ad_status == 'rent'): echo 'selected';endif;?>>Property For Rent</option>
+	                      <option value="rent" <?php if($row->ad_cat == 'rent'): echo 'selected';endif;?>>Property For Rent</option>
 	                      <option value="sale" <?php if($row->ad_cat == 'sale'): echo 'selected';endif;?>>Property for Sale</option>
 	                      <option value="jobs" <?php if($row->ad_cat == 'jobs'): echo 'selected';endif;?>>Jobs</option>
 	                      <option value="community" <?php if($row->ad_status == 'community'): echo 'selected';endif;?>>Community</option>
@@ -131,7 +143,7 @@ if($status==2):
                         <div class="input-field col s8">
                          
                         <select id="adsubcategory" class="motor <?php if($row->ad_cat != 'motor'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'motor'):
@@ -142,7 +154,7 @@ if($status==2):
 	                    </select>
 
 	                    <select id="adsubcategory" class="classifieds <?php if($row->ad_cat != 'classifieds'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'classifieds'):
@@ -152,8 +164,8 @@ if($status==2):
 	                  	<?php endif; endforeach;?>
 	                    </select>
 
-	                    <select id="adsubcategory" class="rent <?php if($row->ad_status != 'rent'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                    <select id="adsubcategory" class="rent <?php if($row->ad_cat != 'rent'): echo 'hide';endif;?> adsubcategory">
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'rent'):
@@ -165,7 +177,7 @@ if($status==2):
 
 
 	                    <select id="adsubcategory" class="sale <?php if($row->ad_cat != 'sale'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'sale'):
@@ -176,7 +188,7 @@ if($status==2):
 	                    </select>
 
 	                    <select id="adsubcategory" class="jobs <?php if($row->ad_cat != 'jobs'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'jobs'):
@@ -187,7 +199,7 @@ if($status==2):
 	                    </select>
 
 	                     <select id="adsubcategory" class="community <?php if($row->ad_status != 'community'): echo 'hide';endif;?> adsubcategory">
-	                       <option value="">Please select your sub category</option>
+	                       <option value="" disabled>Please select your sub category</option>
 	                      <?php foreach($subcat->result() as $scat):
 
 	                      	if($scat->cat_name == 'community'):
@@ -257,11 +269,10 @@ if($status==2):
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+		$('.loader').addClass('hide');
 
 
 		$(".updateadd").click(function(){
-
 			var membershipPlan = $('select#memplan option:selected').val();
 			var adstatus = $('select#adstatus option:selected').val();
 			$.post("<?php echo base_url('index.php/advts/update/').$id;?>",'startdate='+startdate+'&enddate='+enddate + '&memplan='+membershipPlan+'&adstatus='+adstatus,function(msg){
@@ -310,12 +321,20 @@ if($status==2):
                     {
                        $("#step2").removeClass("disabled"), $("ul.tabs").tabs(), $("ul.tabs").tabs("select_tab", "step2");
                        var str = "adname="+adName+"&desc="+adDesc + "&price=" + adPrice + "&cat=" + adCat + "&subcat="+adSubcat;
+                       
                        $.post('<?php echo base_url("index.php/advts/update/").$id;?>',str,function(msg){
                         if(msg.status == 'success'){
                           temp_id = msg.tempid;
                           Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "green");
+                          		$('.loader').addClass('hide');
+                          		$('.update').removeClass('hide');
+
                           }else{
                             Materialize.toast('<span class="white-text">'+msg.desc+'</span>', 5e3, "red");
+                            		$('.loader').addClass('hide'); 
+                            		$('.update').removeClass('hide');
+
+
                           }
                        }
 
@@ -324,15 +343,26 @@ if($status==2):
                     else
                     {
                       Materialize.toast('<span class="white-text">Something went wrong, Please try again.</span>', 5e3, "red");
+                      		$('.loader').addClass('hide');
+                      		$('.update').removeClass('hide');
+
+
                     }
                   }else{
                       Materialize.toast('<span class="white-text">Something went wrong, Please try again.</span>', 5e3, "red");
+                      		$('.loader').addClass('hide');
+                      		$('.update').removeClass('hide');
+
+
 
                   }
 
                 }
 
                 $('.update').click(function(){
+                	
+                  $('.loader').removeClass('hide');
+                  $('.update').addClass('hide');
 
                   var adname = $("#adname").val();
                   var price = $("#price").val();
