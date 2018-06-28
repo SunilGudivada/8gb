@@ -60,7 +60,7 @@ class Advertise_model extends CI_Model {
         }
 
         public function getData($type){
-            $sql = "SELECT * from addata where ad_type ='$type' AND ad_status=1 limit 5";
+            $sql = "SELECT * from addata where ad_type ='$type' AND ad_status=2";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -69,6 +69,14 @@ class Advertise_model extends CI_Model {
         public function getMyData(){
             $id = $this->session->id;
             $sql = "SELECT * from addata where user_id ='$id'";
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function getMyPendingData(){
+            $id = $this->session->id;
+            $sql = "SELECT * from tempaddata where user_id ='$id'";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -187,6 +195,28 @@ class Advertise_model extends CI_Model {
             foreach($query->result() as $row):
                 return $row->desp;
             endforeach;
+       }
+
+       public function getTitle($i){
+        $sql = "SELECT * from addata where ad_id = $i";
+            $this->load->database();
+            $query = $this->db->query($sql);
+            $title = '';
+            foreach ($query->result() as $row) {
+                $title = $row->ad_name;
+            }
+            return $title;
+       }
+
+       public function getImageData($i){
+        $sql = "SELECT * from addata A join image I on A.ad_id = I.advt_id where A.ad_id = '$i' order by id asc limit 1";
+        $this->load->database();
+            $query = $this->db->query($sql);
+            $img = '';
+            foreach ($query->result() as $row) {
+                $img = $row->img_value;
+            }
+            return $img;
        }
 
     }

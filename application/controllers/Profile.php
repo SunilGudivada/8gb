@@ -89,4 +89,18 @@ class Profile extends CI_Controller {
 		}
 
  	}
+
+ 	public function pending(){
+ 		$this->load->model('Advertise_model');
+		$data['ads'] = $this->Advertise_model->getMyPendingData();
+
+		$this->load->model('Auth_model');
+		$data['userDetails'] = $this->Auth_model->getUserDetails();
+
+		$this->load->view('user/pre');
+		$this->load->view('user/header_icon');	
+		$this->load->view('user/profile',$data);
+		$this->load->view('user/footer');
+		$this->load->view('user/post');
+ 	}
  }

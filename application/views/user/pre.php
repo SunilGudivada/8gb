@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="8GB">
-    <meta name="keywords" content="Events" />
-    <title>8GB</title>
+    <meta name="keywords" content="classyAd" />
+      <link rel="icon" href="<?php echo base_url('assets/images/icon.png'); ?>" sizes="32x32">
+    <title><?php echo isset($title) ? $title : '8GB' ; ?> | ClassyAd</title>
     <meta name="msapplication-TileColor" content="#d50000">
 
 <!--Andriod phone-->

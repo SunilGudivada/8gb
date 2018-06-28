@@ -12,13 +12,14 @@ foreach($ads->result() as $row):
   <div class="blog">
 
     <div class="card ">
-      <div href="#" data-position="right" data-delay="50" data-tooltip=" Regular ClassyAd"class="btn-floating btn-small tooltipped flow-text but_type_list left green darken-3 waves-effect waves-light ">
-        <i class="mdi-action-stars"></i></div>
+      
         <div class="card-image waves-effect waves-block waves-light">
-            <a href="#!"><img src="<?php echo base_url('assets/images/gallary/'.($i%19+1).'.jpg');?>" alt="blog-img">
+          <?php $data = $this->Advertise_model->getImageData($row->ad_id);?>
+            <a href="#!"><?php if($data != ''){ ?><img src="<?php echo base_url('assets/images/upload/'.$data);?>" alt="blog-img" onerror="this.src='<?php echo base_url('assets/images/default2.png');?>'"><?php }else{ ?><img src="<?php echo base_url('assets/images/default2.png');?>"><?php } ?>
             </a>
         </div>
-
+<div href="#" data-position="right" data-delay="50" data-tooltip="Premium Advertisement"class="btn-floating btn-small tooltipped flow-text but_type_list left green darken-3 waves-effect waves-light ">
+        <i class="mdi-action-stars"></i></div>
         <ul class="card-action-buttons">
             <li><a class="btn-floating waves-effect waves-light color activator"><i class="mdi-social-share"></i></a>
             </li>                            
@@ -31,7 +32,7 @@ foreach($ads->result() as $row):
               <span class="left"><a href=""><b><?php echo ucfirst($row->ad_cat);?></b></a></span>
               
             </p>
-            <h4 class="card-title grey-text text-darken-4"><a href="<?php echo base_url('index.php/advts/view/').$row->ad_id; ?>" class="grey-text text-darken-4"><?php echo $row->ad_name;?></a>
+            <h4 class="card-title grey-text text-darken-4"><a href="<?php echo base_url('index.php/advts/view/').$row->ad_id.'/'.str_replace(';','',str_replace('.','',str_replace(' ', '-', $row->ad_name)));?>" class="grey-text text-darken-4"><?php echo $row->ad_name;?></a>
             </h4>
             <p class="blog-post-content"><?php echo $row->ad_desc;?></p>
             <div class="row">

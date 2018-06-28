@@ -13,6 +13,10 @@ if($status==2):
 				<?php $j=0;foreach ($images->result() as $image):$j++;?> 
 				<img src="<?php echo base_url('assets/images/upload/'.$image->img_value);?>" id="<?php echo $j;?>_img" class="multiple-images <?php if($j>1):echo 'hide';endif;?>">
 				<?php endforeach;?>
+				<?php if($j==0):?>
+					<img src="<?php echo base_url('assets/images/default.png');?>">
+					<p class="red-text center"><b>This is the default image.This will be removed automatically when you upload an image.</b></p>
+				<?php endif;?>
 			</div><br><br>
 			
 			<div class="row">
@@ -36,6 +40,8 @@ if($status==2):
 				</div>	
 			</div>
 		</div>
+
+
 				
 			</div><br>
 			<script>

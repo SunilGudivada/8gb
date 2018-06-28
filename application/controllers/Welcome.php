@@ -13,6 +13,7 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->model('Advertise_model');
 		$data['ads'] = $this->Advertise_model->getData('premium');
+		// $data['ads'] = $this->Advertise_model->getImageData();
 		$this->load->view('user/pre.php');
 		$this->load->view('user/header.php');		
 		$this->load->view('user/home.php');
@@ -20,9 +21,5 @@ class Welcome extends CI_Controller {
 		$this->load->view('user/featured_ad.php',$data);
 		$this->load->view('user/footer.php');
 		$this->load->view('user/post.php');
-	}
-
-	public function payment(){
-		
 	}
 }

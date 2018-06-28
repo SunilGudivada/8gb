@@ -74,13 +74,13 @@
                             </div>
                           
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_rent">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="rent">
                                 <img src="<?php echo base_url('assets/images/icons/p_rent_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
 
                             <div class="col s2">
-                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="p_sale">
+                              <div class="card card-gra red accent-4 waves-effect waves-light input-category" data-category="sale">
                                 <img src="<?php echo base_url('assets/images/icons/p_sale_big.png');?>" style="width:100%;height:100%;">
                               </div>
                             </div>
@@ -107,14 +107,21 @@
                           <div class="select-category-first red-text">
                             Please Select your category First
                           </div>
-                            <div class="sub-category" id="motor">
-                              <input class="with-gap" name="motor" type="radio" id="test3" value="test3">
-                              <label for="test3"><span class="color-text">Motor Category</span></label>
-                              <input class="with-gap" name="motor" type="radio" id="test4" value="test4">
-                              <label for="test4"><span class="color-text">car</span></label>
-                            </div>
+                            <?php $data = $this->Subcategory_model->getDetails();?>
 
-                            <div class="sub-category"  id="classifieds">
+                              
+
+                              <?php foreach ($data->result() as $row):?>
+
+                                
+                            <div class="sub-category <?= $row->cat_name?>">
+                              <input class="with-gap" name="<?= $row->cat_name?>" type="radio" id="<?= $row->subcat_name?>" value="<?= $row->subcat_name?>">
+                              <label for="<?= $row->subcat_name?>"><span class="color-text"><?= $row->subcat_name?></span></label>          
+                            </div>
+                          
+                          <?php endforeach;?>
+
+                            <!-- <div class="sub-category"  id="classifieds">
                               <input class="with-gap" name="classifieds" type="radio"  id="test5" value="test5">
                               <label for="test5"><span class="color-text">classifieds Category</span></label>
                               <input class="with-gap" name="classifieds" type="radio" id="test6" value="test6">
@@ -147,7 +154,7 @@
                               <label for="test13"><span class="color-text">community Category</span></label>
                               <input class="with-gap" name="community" type="radio" id="test14" value="test14">
                               <label for="test14"><span class="color-text">car</span></label>
-                            </div>
+                            </div> -->
                         </div>
                       </div>
 
@@ -264,7 +271,7 @@
                   $(this).css('border','3px white solid');
 
                   //Display subcategory of the selected Category
-                  $("#"+category_input).show();
+                  $("."+category_input).show();
 
                 });
 

@@ -21,6 +21,7 @@ class Advts extends CI_Controller {
 		if($this->session->type!= 'user' ){
 			header('Location:'.base_url(''));
 		}else{
+			$this->load->model('Subcategory_model');
 			$this->load->view('user/pre');
 			$this->load->view('user/header_icon');	
 			$this->load->view('user/advertise');	
@@ -59,13 +60,16 @@ class Advts extends CI_Controller {
 
 	
 
-	public function view($i){
+	public function view($i,$j){
 
 		if($this->session->type!= 'admin' ){
+			
 			$this->load->model('Advertise_model');
 	 		$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
 	 		$data['images'] = $this->Advertise_model->getImageIds($i);
-	 		$this->load->view('user/pre');
+
+	 		$data['title'] = $this->Advertise_model->getTitle($i);
+	 		$this->load->view('user/pre',$data);
 	 		$this->load->view('user/header');
 	 		$this->load->view('user/advertisements_ind_disp',$data);
 	 		$this->load->view('user/post');

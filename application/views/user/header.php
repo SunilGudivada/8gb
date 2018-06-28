@@ -42,7 +42,7 @@
                         
 
                         <?php if($this->session->type == 'user'):?>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text" data-activates="auth-dropdown"><span style="padding: 0 8px 0;"><?php echo substr($this->session->email,0,1);?></span></a>
+                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text flow-text" data-activates="auth-dropdown"><span style="padding: 0 8px 0;"><?php echo substr($this->session->email,0,1);?></span></a>
                             </li>
                             <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="more-dropdown">More</a>
                             </li>
@@ -55,6 +55,9 @@
                     <ul id="auth-dropdown" class="dropdown-content ultra-small">
                       <li>
                         <a href="<?php echo base_url('index.php/profile');?>"><span class="">My Profile</span></a>
+                      </li>
+                      <li>
+                        <a href="<?php echo base_url('index.php/profile/pending');?>"><span class="">Pending Advertisements</span></a>
                       </li>
                       <li>
                         <a href="<?php echo base_url('index.php/auth/logout');?>"><span class="">Logout</span></a>

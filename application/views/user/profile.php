@@ -225,7 +225,8 @@ foreach($ads->result() as $row):
 		    		?> lighten-4">
       
         <div class="card-image waves-effect waves-block waves-light">
-            <a href="#!"><img src="<?php echo base_url('assets/images/gallary/'.($i%19+1).'.jpg');?>" alt="blog-img">
+           <?php $data = $this->Advertise_model->getImageData($row->ad_id);?>
+            <a href="#!"><?php if($data != ''){ ?><img src="<?php echo base_url('assets/images/upload/'.$data);?>" alt="<?= $row->ad_name?>" onerror="this.src='<?php echo base_url('assets/images/default2.png');?>'"><?php }else{ ?><img src="<?php echo base_url('assets/images/default2.png');?>"><?php } ?>
             </a>
         </div>
 		<div href="#" data-position="right" data-delay="50"
@@ -295,7 +296,7 @@ foreach($ads->result() as $row):
 
               <span class="right"><b></b><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></span>
             </p>
-            <h4 class="card-title grey-text text-darken-4"><a href="<?php echo base_url('index.php/advts/view/').$row->ad_id;?>" class="grey-text text-darken-4"><?php echo ucfirst($row->ad_name);?></a>
+            <h4 class="card-title grey-text text-darken-4"><a href="<?php echo base_url('index.php/advts/view/').$row->ad_id.'/'.str_replace(';','',str_replace('.','',str_replace(' ', '-', $row->ad_name)));?>" class="grey-text text-darken-4"><?php echo ucfirst($row->ad_name);?></a>
             </h4>
             <p class="blog-post-content"><?php echo $row->ad_desc;?></p>
 
