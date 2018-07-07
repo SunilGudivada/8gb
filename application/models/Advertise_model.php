@@ -24,7 +24,7 @@ class Advertise_model extends CI_Model {
             $adstatus =0;
             $user_id = $this->session->id;
             $this->load->database();
-            $query = "INSERT INTO tempaddata (ad_id,user_id,ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_status) values('$tempid',$user_id,'$adname','$addesc','$adprice','$adcategory','$adsubcat',$adstatus)";
+            $query = "INSERT INTO addata (transaction_id,user_id,ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_status) values('$tempid',$user_id,'$adname','$addesc','$adprice','$adcategory','$adsubcat',$adstatus)";
             $this->db->query($query);
             return true;
 
@@ -46,21 +46,21 @@ class Advertise_model extends CI_Model {
          //    $adendtime = '';
             $adstatus =0;
             $this->load->database();
-            $query = "INSERT INTO tempaddata (ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_type,ad_status) values('$adname','$addesc','$adprice','$adcategory','$adsubcat','$adtype',$adstatus)";
+            $query = "INSERT INTO addata (ad_name,ad_desc,ad_price,ad_cat,ad_subcat,ad_type,ad_status) values('$adname','$addesc','$adprice','$adcategory','$adsubcat','$adtype',$adstatus)";
             $this->db->query($query);
             return true;
 
         }
 
         public function verifyIdPlan($i,$j){
-            $sql = "UPDATE tempaddata set ad_type = '$i'where ad_id = '$j'";
+            $sql = "UPDATE addata set ad_type = '$i'where transaction_id = '$j'";
              $this->load->database();
            $this->db->query($sql);
             return true;
         }
 
         public function getData($type){
-            $sql = "SELECT * from addata where ad_type ='$type' AND ad_status=2";
+            $sql = "SELECT * from addata A join user U on U.id = A.user_id where ad_type ='$type' AND ad_status=2";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -76,7 +76,7 @@ class Advertise_model extends CI_Model {
 
         public function getMyPendingData(){
             $id = $this->session->id;
-            $sql = "SELECT * from tempaddata where user_id ='$id'";
+            $sql = "SELECT * from addata where user_id ='$id'";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -97,7 +97,7 @@ class Advertise_model extends CI_Model {
         }
 
         public function getTempAdvtData($id){
-             $sql = "SELECT * from tempaddata where ad_id = '$id' ";
+             $sql = "SELECT * from addata where transaction_id = '$id' ";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -139,7 +139,7 @@ class Advertise_model extends CI_Model {
         }
 
         public function payRqstDetails($i){
-            $sql = "SELECT * from tempaddata T join user U on U.id = T.user_id where T.ad_id = '$i'";
+            $sql = "SELECT * from addata T join user U on U.id = T.user_id where T.ad_id = '$i'";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;

@@ -22,7 +22,7 @@ class Auth_model extends CI_Model {
 
       }else{
 
-      	$sql = "SELECT * from user where email = '$email' AND pass = '$pass'";
+      	$sql = "SELECT * from user where ( email = '$email' OR phone = '$email' ) AND pass = '$pass' AND status<2";
       	$this->load->database();
        	$query = $this->db->query($sql);
        	$data = ($query->num_rows() > 0)? true : false;

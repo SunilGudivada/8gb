@@ -57,9 +57,6 @@
                         <a href="<?php echo base_url('index.php/profile');?>"><span class="">My Profile</span></a>
                       </li>
                       <li>
-                        <a href="<?php echo base_url('index.php/profile/pending');?>"><span class="">Pending Advertisements</span></a>
-                      </li>
-                      <li>
                         <a href="<?php echo base_url('index.php/auth/logout');?>"><span class="">Logout</span></a>
                       </li>
                       

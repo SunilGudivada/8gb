@@ -207,7 +207,7 @@ class Auth extends CI_Controller {
 			die(json_encode(array('status'=>$status,'desc' => $desc,'email'=> $email)));
 		}else{
 			$status = 'failure';
- 			$desc = 'Account exist but Password Incorrect';
+ 			$desc = 'Something went wrong';
  			header('Content-Type: application/json');
 	    	die(json_encode(array('status'=>$status,'desc' => $desc,'email'=> $email)));
 		}

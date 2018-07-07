@@ -343,10 +343,7 @@ class Advts extends CI_Controller {
 		$data = $this->Advertise_model->UpdateTransactionDetails($pId,$prId);
 	
 	if($data){
-			$status = 'success';
- 			$desc = 'Payment succesfully added';
- 			header('Content-Type: application/json');
-	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+			header("Location:".base_url('index.php/advts/addsuccessful'));
 		}else{
 			$status = 'failure';
  			$desc = 'Something Went Wrong';
@@ -354,6 +351,13 @@ class Advts extends CI_Controller {
 	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
 		}
 
+	}
+
+	public function addsuccessful(){
+		$this->load->view('user/pre');
+ 		$this->load->view('user/header');
+ 		$this->load->view('user/adsuccess');
+ 		$this->load->view('user/post');
 	}
 
 	public function upload($i){

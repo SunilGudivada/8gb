@@ -35,7 +35,7 @@
 <?php endforeach;?>
 	</div>
 <div class="center">
-<div class="btn btn-large color flow-text waves-effect waves-light btn-cnf">COnfirm <i class="mdi-content-send"></i></div>
+<div class="btn btn-large color flow-text waves-effect waves-light btn-cnf">Confirm <i class="mdi-content-send"></i></div>
 </div>
 	</div>
 </section>
@@ -51,7 +51,7 @@
 			if(type != 'free'){
 				location.href="<?php echo base_url('index.php/advts/payRequest/').$id.'/'.$type;?>";
 			}else{
-				location.href="<?php echo base_url('');?>";
+				location.href="<?php echo base_url('index.php/advts/addsuccessful');?>";
 			}
 		});
 	});

@@ -11,8 +11,8 @@
                         <div class="currentStatus">
 
                             <div style="display: inline-block;">
-                                <img src="<?php echo base_url("assets/images/gallary/1.jpg");?>">
-                            </div>
+                              <img src="<?php echo base_url("assets/images/gallary/1.jpg");?>">
+                                      </div>
                             <div>
                                 <img src="<?php echo base_url("assets/images/gallary/2.jpg");?>">
                             </div>
