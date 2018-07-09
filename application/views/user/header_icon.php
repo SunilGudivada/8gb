@@ -68,7 +68,7 @@
                         <a href="<?php echo base_url('index.php/advts');?>"><span class="">Advertise</span></a>
                       </li>
                       <li>
-                        <a href="#!"><span class="">24 * 7 Customer Care</span></a>
+                        <a href="<?php echo base_url('index.php/advts');?>"><span class="">Contact Us</span></a>
                       </li>
                       
                     </ul>
@@ -81,7 +81,52 @@
                 </nav>
             </div>
         </header>
+<aside id="left-sidebar-nav">
+        <ul id="slide-out" class="side-nav leftside-navigation color white-text">
+            
+            <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-light white-text"><i class="mdi-action-home"></i> Home</a>
+            </li>
 
+            <?php if($this->session->userdata('type') != 'user' && $this->session->userdata('type') != 'admin'):?>
+
+            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light signin"><i class="mdi-action-perm-identity"></i> SignIn</a></li>
+            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light signup"> <i class="mdi-social-person-add"></i> SignUp</a></li>
+
+            <?php endif;?>
+
+            <?php if($this->session->userdata('type') == 'user' && $this->session->userdata('type') != 'admin'):?>
+
+            <li><a href="<?= base_url('index.php/profile')?>" class="waves-effect waves-block waves-light white-text"><i class="mdi-action-perm-identity"></i> Profile</a></li>
+
+            <?php endif;?>
+            <li class="bold"><a href="<?= base_url('index.php/advts')?>" class="waves-effect waves-cyan white-text"><i class="mdi-notification-play-install"></i> Advertise</a>
+            </li>
+            
+            
+            <li class="li-hover"><div class="divider"></div></li>
+            <li class="bold white-text"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-action-verified-user"></i> About Us</a>
+            </li>
+            <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-image-grid-on"></i> Career</a>
+            </li>
+            <li class="bold"><a href="<?= base_url('index.php/contactus')?>" class="waves-effect waves-cyan white-text"><i class="mdi-communication-contacts"></i> contact Us</a>
+            </li>
+           
+                        <li class="li-hover"><div class="divider"></div></li>
+                         <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-notification-disc-full"></i> Disclaimer</a>
+            </li>
+            <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-communication-live-help"></i> Privacy</a>
+            </li>
+            <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-action-swap-vert-circle"></i> Terms of Use</a>
+            </li> 
+             <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-action-swap-vert-circle"></i> Listing Policy</a>
+            </li> 
+             <li class="bold"><a href="<?= base_url('')?>" class="waves-effect waves-cyan white-text"><i class="mdi-action-swap-vert-circle"></i> Refund</a>
+            </li>                    
+            
+        </ul>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only red accent-4"><i class="mdi-navigation-menu"></i></a>
+
+    </aside>
         <div id="signupmodal" class="modal color-text modalsignup">
     <div class="modal-content " >
         <div class="row p-row">

@@ -17,8 +17,8 @@ class Memplan_model extends CI_Model {
     public function getDetailsById($i){
     	$sql = "SELECT * from memplan where id = $i";
     	$this->load->database();
-       	$query = $this->db->query($sql);
-       	return $query;
+      $query = $this->db->query($sql);
+      return $query;
     }
 
     public function update($i,$j){
@@ -45,7 +45,25 @@ class Memplan_model extends CI_Model {
     public function delete($i){
     	$sql = "DELETE from memplan where id = $i";
     	$this->load->database();
-       	$this->db->query($sql);
-       	return true;
+      $this->db->query($sql);
+      return true;
+    }
+
+    public function getIndMemDet($type,$add){
+      $val = $type.'.'.$add;
+      $sql = "SELECT * from memplan where type = '$type' AND value='$val'";
+      $this->load->database();
+      $query = $this->db->query($sql);
+      foreach ($query->result() as $row) {
+        return $row->desp;
+      }
+    }
+
+    public function getAttrMemDet($type,$add){
+       $val = $type.'.'.$add;
+      $sql = "SELECT * from memplan where type = '$type' AND value='$val'";
+      $this->load->database();
+      $query = $this->db->query($sql);
+      return $query;
     }
 }

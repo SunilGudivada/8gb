@@ -75,7 +75,7 @@
               
             <p class="row"><br>
 
-              <span class="left"><a href=""><b>Category: <?php echo ucfirst($row->ad_cat);?></b></a></span>
+              <span class="left"><a href=""><b>Category: <?php echo ucfirst($row->ad_cat);?></b></a></span><br>
               <span class="left"><a href=""><b>Sub Category: <?php echo ucfirst($row->ad_subcat);?></b></a></span>
             </p>
             <br>
@@ -84,9 +84,9 @@
 			<br>
             <div class="row">
               <div class="col s2">
-                <img src="http://localhost/deepak/classyad/assets/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                <img src="http://localhost/deepak/classyad/assets/images/icon.png" alt="" class="circle responsive-img valign profile-image">
               </div>
-              <div class="col s6">By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><span class="left"><?php echo $row->ad_starttime;?></span></div>
+              <div class="col s6">By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><span class="left"><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></span></div>
             </div>
         </div>
 		</div>

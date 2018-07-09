@@ -160,7 +160,7 @@
             <div class="row">
               <div class="col s2">
                 <img src="<?= base_url('assets/images/icon.png') ?>" alt="" class="circle responsive-img valign profile-image">
-              </div><br>
+              </div>
               <div class="col s6">By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><span class="left"><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></span></div>
             </div>
         </div>

@@ -66,4 +66,11 @@ class Analytics_model extends CI_Model {
     	$query = $this->db->query($sql);
     	return $query;
     }
+
+    public function addContactDetails($a,$b,$c){
+        $sql ="INSERT INTO contactform (Name,Email_id,Description) Values('$a','$b','$c')";
+        $this->load->database();
+        $this->db->query($sql);
+        return true;
+    }
 }

@@ -91,21 +91,22 @@ class Advertise_model extends CI_Model {
         }
 
         public function getDetailsById($id){
+
+            $time = time();
+            $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id AND A.ad_endtime>=$time AND A.ad_starttime<=$time AND A.ad_status = 2";
             if($this->session->type == 'admin'){
                 $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id ";
             }
 
-            if($this->session->type == 'user'){
-                $time = time();
-                $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id AND A.ad_endtime>=$time AND A.ad_starttime<=$time AND A.ad_status = 2";
-            }
+            
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
         }
 
         public function getDetailsByIdToEdit($id){
-            $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id ";
+            $userid = $this->session->id;
+            $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id AND U.id = $userid";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -140,7 +141,7 @@ class Advertise_model extends CI_Model {
         }
 
         public function getImageIds($i){
-            $sql = "SELECT * from image where advt_id = $i and status = 0";
+            $sql = "SELECT * from image I join addata A on ( A.transaction_id = I.advt_id or A.ad_id = I.advt_id )where A.ad_id = $i and status = 0";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -224,7 +225,7 @@ class Advertise_model extends CI_Model {
        }
 
        public function getImageData($i){
-        $sql = "SELECT * from addata A join image I on A.ad_id = I.advt_id where A.ad_id = '$i' order by id asc limit 1";
+        $sql = "SELECT * from addata A join image I on ( A.ad_id = I.advt_id or A.transaction_id = I.advt_id ) where A.ad_id = '$i' order by id asc limit 1";
         $this->load->database();
             $query = $this->db->query($sql);
             $img = '';

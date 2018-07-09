@@ -21,6 +21,7 @@ class Advts extends CI_Controller {
 		if($this->session->type!= 'user' ){
 			header('Location:'.base_url(''));
 		}else{
+			$this->load->model('Memplan_model');
 			$this->load->model('Subcategory_model');
 			$this->load->view('user/pre');
 			$this->load->view('user/header_icon');	
@@ -134,7 +135,7 @@ class Advts extends CI_Controller {
 
 		}else{
 			$this->load->model('Advertise_model');
-			$data['advertisements'] = $this->Advertise_model->getDetailsbyIdToEdit($i);
+			$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
 			$data['images'] = $this->Advertise_model->getImageIds($i);
 			$this->load->view('admin/pre');
 	 		$this->load->view('admin/header');
@@ -300,12 +301,16 @@ class Advts extends CI_Controller {
 	}
 
 	public function cnfrmadvt($i){
+		if(!$i){
+			header('location:'.base_url('index.php/advts/'));
+		}
 		$this->load->model('Advertise_model');
 		$data['advertisement'] = $this->Advertise_model->getTempAdvtData($i);
 		$this->load->view('user/pre');
  		$this->load->view('user/header');
  		$this->load->view('user/advts_cnf_ind_disp',$data);
  		$this->load->view('user/post');
+
 	}
 
 	public function payRequest($i,$j){
@@ -368,6 +373,63 @@ class Advts extends CI_Controller {
  		$this->load->view('user/post');
  	}
 
+ 	public function imgup($i)
+    {
+        $config['upload_path']          = './assets/images/upload/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 2048;
+        $config['encrypt_name']         = TRUE;
+		$new_name                       = time();
+		$config['file_name']            = $new_name;
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+	        $this->load->view('user/pre');
+	 		$this->load->view('user/header');
+	 		$this->load->view('user/fileupload',$error);
+	 		$this->load->view('user/post');
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data(),'advt_id'=>$i);
+            $imageName= $data['upload_data']['file_name'];
+            $this->load->model('Upload_model');
+            $this->Upload_model->addImage($imageName,$this->session->id,$i);
+
+            $this->load->library('image_lib');
+	 		$config['image_library'] = 'gd2';
+
+
+	 		$config['source_image'] = './assets/images/upload/'.$imageName;
+			$this->load->library('image_lib');
+		    $config['new_image'] = './assets/images/upload/'.$imageName;
+		    $config['wm_overlay_path'] = './assets/images/logo_wm.png';
+		    $config['maintain_ratio']= TRUE;
+		    $config['width'] = 500;
+		    $config['width'] = 500;
+		    $config['wm_type'] = 'overlay';
+		    //the overlay image
+		    $config['wm_opacity'] = 40;
+		    $this->image_lib->clear();
+		    $this->image_lib->initialize($config);
+		    $this->image_lib->resize();
+		    $this->image_lib->watermark();
+		    header("Location:".base_url('index.php/advts/planselec/').$i);
+        }
+
+      }
+
+      public function planselec($i){
+      	$data['id'] = $i;
+      	$this->load->model('Memplan_model');
+      	$this->load->view('user/pre');
+ 		$this->load->view('user/header');
+ 		$this->load->view('user/planselec',$data);
+ 		$this->load->view('user/post');
+      }
+
  	public function do_upload($i)
     {
         $config['upload_path']          = './assets/images/upload/';
@@ -391,7 +453,7 @@ class Advts extends CI_Controller {
             $data = array('upload_data' => $this->upload->data(),'advt_id'=>$i);
             $imageName= $data['upload_data']['file_name'];
             $this->load->model('Upload_model');
-            $this->Upload_model->addImage($imageName,1,$i);
+            $this->Upload_model->addImage($imageName,$this->session->id,$i);
 
             $this->load->library('image_lib');
 	 		$config['image_library'] = 'gd2';

@@ -1,10 +1,10 @@
 <section id="content">
-
 	<div class="container">
 	<div class="row">
+		<?php $adcount =$advertisements->num_rows(); if($adcount>0):?>
 		<div class="col s10 offset-s1">
 		<div class="card">
-	<?php $id=0; foreach ($advertisements->result() as $row):$id = $row->ad_id;$status =$row->ad_status;
+	<?php $id=0;  foreach ($advertisements->result() as $row):$id = $row->ad_id;$status =$row->ad_status;
 	if($this->session->id == $row->user_id):
 if($status==2):
 ?>
@@ -269,6 +269,12 @@ if($status==2):
 <?php endif;endforeach;?>
 		</div>
 	</div>
+	<?php else: ?>
+<div class="center">
+                    <img src="<?= base_url('assets/images/notfound.PNG') ?>"><br>
+                    <div class="btn btn-large color" onclick="window.history.back()">click here to go back</div>
+                </div>
+	<?php endif;?>
 </div>
 	</div>
 </section>

@@ -108,7 +108,10 @@
 
                 </div>
                 <?php else : ?>
-                    <img src="<?= base_url('assets/images/notfound.PNG') ?>" class="center">
+                    <div class="center">
+                    <img src="<?= base_url('assets/images/notfound.PNG') ?>"><br>
+                    <div class="btn btn-large color" onclick="window.history.back()">click here to go back</div>
+                </div>
                     <?php endif; ?>
 
                         <?php endif; ?>
