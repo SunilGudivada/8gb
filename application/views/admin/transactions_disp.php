@@ -34,7 +34,7 @@
 
 
 
-		                    	<?php echo ucfirst($row->ad_id);?>
+		                    	<?php echo ucfirst($row->transaction_id);?>
 		                    		
 		                    	</td>
 		                    <td class="center" style="text-align:justify;"><?php echo $row->ad_name;?></td>

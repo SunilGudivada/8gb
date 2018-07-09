@@ -86,7 +86,7 @@
               <div class="col s2">
                 <img src="http://localhost/deepak/classyad/assets/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
               </div>
-              <div class="col s6">By <a href="#">John Doe</a><br><span class="left"><?php echo $row->ad_starttime;?></span></div>
+              <div class="col s6">By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><span class="left"><?php echo $row->ad_starttime;?></span></div>
             </div>
         </div>
 		</div>

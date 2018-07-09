@@ -216,4 +216,63 @@ class Auth extends CI_Controller {
  	public function logout(){
  		$this->load->view('logout');
  	}
+
+ 	public function access(){
+ 		$this->load->view('admin/pre');
+ 		$this->load->view('admin/access');
+ 		$this->load->view('admin/post');
+ 	}
+
+ 	public function accessCheck(){
+ 		$userid = $this->input->post('userid');
+ 		$pass = $this->input->post('pass');
+
+ 		$this->load->model('Auth_model');
+ 		$data = $this->Auth_model->checkAdminAccess($userid,$pass);
+
+ 		if($data){
+	 		$status = 'success';
+			$desc = 'Access Granted';
+			header('Content-Type: application/json');
+			die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}else{
+			$status = 'failure';
+ 			$desc = 'Access Denied';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+ 	}
+
+ 	public function changePassKey(){
+
+ 		if($this->session->type == 'admin'){
+	 		$this->load->view('admin/pre');
+	 		$this->load->view('admin/updatepassword');
+	 		$this->load->view('admin/post');
+	 	}else{
+	 		header('location:'.base_url('index.php/auth/access'));
+	 	}
+
+ 	}
+
+
+
+ 	public function updateAdminPass(){
+ 		$pass = $this->input->post('pass');
+
+ 		$this->load->model('Auth_model');
+ 		$data = $this->Auth_model->updateAdminPassword($pass);
+
+ 		if($data){
+	 		$status = 'success';
+			$desc = 'Password Changed';
+			header('Content-Type: application/json');
+			die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}else{
+			$status = 'failure';
+ 			$desc = 'Something went wrong';
+ 			header('Content-Type: application/json');
+	    	die(json_encode(array('status'=>$status,'desc' => $desc)));
+		}
+ 	}
  }

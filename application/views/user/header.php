@@ -39,16 +39,18 @@
 
                         <li><a href="<?php echo base_url('index.php/advts');?>" class="waves-effect waves-block waves-light" >Advertise</a>
                         </li>
+
+                        
                         
 
                         <?php if($this->session->type == 'user'):?>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text flow-text" data-activates="auth-dropdown"><span style="padding: 0 8px 0;"><?php echo substr($this->session->email,0,1);?></span></a>
-                            </li>
-                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="more-dropdown">More</a>
+                            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button color white-text flow-text" data-activates="auth-dropdown"><span style="padding: 0 8px 0;"><?php echo ucfirst(substr($this->session->email,0,1));?></span></a>
                             </li>
                             
                         <?php endif;?>
 
+                        <li><a href="#!" class="waves-effect waves-block waves-light translation-button" data-activates="more-dropdown">More</a>
+                        </li>
                          
                     </ul>
 
@@ -64,11 +66,12 @@
 
                      <ul id="more-dropdown" class="dropdown-content ultra-small">
                       
+                     
+                      <li>
+                        <a href="<?= base_url('index.php/contactus') ?>"><span class="">Contact Us</span></a>
+                      </li> 
                       <li>
                         <a href="#!"><span class="">24 * 7 Customer Care</span></a>
-                      </li>
-                      <li>
-                        <a href="#!"><span class="">Membership Plans</span></a>
                       </li>
                       
                     </ul>

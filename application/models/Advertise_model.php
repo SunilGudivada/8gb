@@ -60,7 +60,8 @@ class Advertise_model extends CI_Model {
         }
 
         public function getData($type){
-            $sql = "SELECT * from addata A join user U on U.id = A.user_id where ad_type ='$type' AND ad_status=2";
+            $time = time();
+            $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_type ='$type' AND A.ad_status=2 AND A.ad_endtime >= $time AND A.ad_starttime< $time";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
@@ -83,14 +84,28 @@ class Advertise_model extends CI_Model {
         }
 
         public function getDetails(){
-             $sql = "SELECT * from addata";
+            $sql = "SELECT * from addata";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;
         }
 
         public function getDetailsById($id){
-             $sql = "SELECT * from addata where ad_id = $id ";
+            if($this->session->type == 'admin'){
+                $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id ";
+            }
+
+            if($this->session->type == 'user'){
+                $time = time();
+                $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id AND A.ad_endtime>=$time AND A.ad_starttime<=$time AND A.ad_status = 2";
+            }
+            $this->load->database();
+            $query=$this->db->query($sql);
+            return $query;
+        }
+
+        public function getDetailsByIdToEdit($id){
+            $sql = "SELECT * from addata A join user U on U.id = A.user_id where A.ad_id = $id ";
             $this->load->database();
             $query=$this->db->query($sql);
             return $query;

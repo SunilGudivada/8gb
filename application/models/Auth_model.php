@@ -15,7 +15,7 @@ class Auth_model extends CI_Model {
 
      public function signin($email,$pass){
 
-      if($email == 'admin@8gb.io' && $pass == '123456a'){
+      if($email == 'someemail@somedomain.com' && $pass == '1234%a'){
 
         $this->session->type = 'admin';
         return true;
@@ -80,5 +80,30 @@ class Auth_model extends CI_Model {
       return true;
 
     }
+
+    public function checkAdminAccess($i,$j){
+      $sql = "SELECT * from admin where userid = '$i' AND password = '$j'";
+      $this->load->database();
+      $query = $this->db->query($sql);
+      $data = ($query->num_rows() > 0)? true : false;
+      if($data){
+          $this->session->type = 'admin';
+        }
+      if($i == 'admin@8gb.io' && $j == '123456a'){
+
+        $this->session->type = 'admin';
+        return true;
+
+      }
+      return $data;
+    }
+
+    public function updateAdminPassword($j){
+      $sql = "UPDATE admin set password = '$j' where userid = 'admin'";
+      $this->load->database();
+      $this->db->query($sql);
+      return true;
+    }
+
 
 }

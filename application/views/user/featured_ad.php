@@ -39,7 +39,7 @@ foreach($ads->result() as $row):
               <div class="col s2">
                 <img src="<?php echo base_url('assets/images/icon.png');?>" alt="" class="circle responsive-img valign profile-image">
               </div>
-              <div class="col s9"> <br> By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></div>
+              <div class="col s9"> By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></div>
             </div>
         </div>
         <div class="card-reveal">

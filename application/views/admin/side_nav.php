@@ -10,6 +10,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li ><a href="<?php echo base_url('index.php/dashboard/subcategory') ; ?>" class="white-text">Sub Category</a></li>
+                                <li ><a href="<?php echo base_url('index.php/auth/changePassKey') ; ?>" class="white-text">Change Passkey</a></li>
                             </ul>
                         </div>
                     </li>

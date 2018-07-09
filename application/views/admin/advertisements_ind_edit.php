@@ -6,12 +6,16 @@
 	<?php $id=0; foreach ($advertisements->result() as $row):$id = $row->ad_id;
 
 	$starttime =  $row->ad_starttime * 1000 - 24*60*60*1000;
-	$endtime = $row->ad_endtime*1000;?>
+	$endtime = $row->ad_endtime*1000- 24*60*60*1000;?>
 		<div class="col s12 m6 l6"><br>
 			<div class="card-image waves-effect waves-light">
 				<?php $j=0;foreach ($images->result() as $image):$j++;?> 
 				<img src="<?php echo base_url('assets/images/upload/'.$image->img_value);?>" id="<?php echo $j;?>_img" class="multiple-images <?php if($j>1):echo 'hide';endif;?>">
 				<?php endforeach;?>
+				<?php if($j==0):?>
+					<img src="<?php echo base_url('assets/images/default.png');?>">
+					<p class="red-text center"><b>This is the default image.This will be removed automatically when you upload an image.</b></p>
+				<?php endif;?>
 			</div><br><br>
 			
 			<div class="row">
@@ -146,7 +150,7 @@
 
             	<a class="green right updateadd" style="color:white;padding:5px;border-radius:3px;" href="#!">Update <i class="mdi-content-send"></i> </a><br>
 
-              <span class="left"><a href=""><b>Category: <?php echo ucfirst($row->ad_cat);?></b></a></span>
+              <span class="left"><a href=""><b>Category: <?php echo ucfirst($row->ad_cat);?></b></a></span><br>
               <span class="left"><a href=""><b>Sub Category: <?php echo ucfirst($row->ad_subcat);?></b></a></span>
             </p>
             <br>
@@ -155,9 +159,9 @@
 			<br>
             <div class="row">
               <div class="col s2">
-                <img src="http://localhost/deepak/classyad/assets/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
-              </div>
-              <div class="col s6">By <a href="#">John Doe</a><br><span class="left"><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></span></div>
+                <img src="<?= base_url('assets/images/icon.png') ?>" alt="" class="circle responsive-img valign profile-image">
+              </div><br>
+              <div class="col s6">By <a href="#"><?= $row->firstname.' '.$row->middlename.' '.$row->lastname ?></a><br><span class="left"><?php if($row->ad_starttime>0):echo date('d M,y',$row->ad_starttime);endif;?></span></div>
             </div>
         </div>
 		</div>
@@ -173,7 +177,7 @@
 		$(".picker__weekday-display").addClass('red amber-4');
 	},1000);
 
-		$startdate = $('.startdate').pickadate();
+<?php if($row->ad_starttime>0 && $row->ad_endtime>0):?>		$startdate = $('.startdate').pickadate();
 		var picker = $startdate.pickadate('picker')
 		picker.set('select',<?php echo $starttime;?>);
 
@@ -181,17 +185,18 @@
 		var picker = $enddate.pickadate('picker')
 		picker.set('select',<?php echo $endtime;?>);
 
+<?php endif;?>
 
 		$(".updateadd").click(function(){
 			var startdate = $('.startdate').val();
 
 			var date = new Date(startdate);
-			startdate = date.getTime() / 1000;
+			startdate = date.getTime()  / 1000 + 24*60*60;
 
 			var enddate = $('.enddate').val();
 
 			 date = new Date(enddate);
-			 enddate = date.getTime() / 1000;
+			 enddate = date.getTime() / 1000 + 24*60*60;
 
 			var membershipPlan = $('select#memplan option:selected').val();
 			var adstatus = $('select#adstatus option:selected').val();

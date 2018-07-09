@@ -116,7 +116,7 @@ class Advts extends CI_Controller {
 			$this->load->model('Advertise_model');
 			$this->load->model('Subcategory_model');
 
-			$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+			$data['advertisements'] = $this->Advertise_model->getDetailsbyIdToEdit($i);
 			$data['images'] = $this->Advertise_model->getImageIds($i);
 			$data['subcat'] = $this->Subcategory_model->getDetails();
 			$type = $this->Advertise_model->getAdType($i);
@@ -134,7 +134,7 @@ class Advts extends CI_Controller {
 
 		}else{
 			$this->load->model('Advertise_model');
-			$data['advertisements'] = $this->Advertise_model->getDetailsbyId($i);
+			$data['advertisements'] = $this->Advertise_model->getDetailsbyIdToEdit($i);
 			$data['images'] = $this->Advertise_model->getImageIds($i);
 			$this->load->view('admin/pre');
 	 		$this->load->view('admin/header');

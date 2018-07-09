@@ -13,6 +13,7 @@
     <link href="<?php echo base_url('assets/css/materialize.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/css/style.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/css/custom/custom.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
+
     <link href="<?php echo base_url('assets/js/plugins/prism/prism.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url('assets/js/plugins/dropify/css/dropify.min.css');?>" type="text/css" rel="stylesheet" media="screen,projection">
