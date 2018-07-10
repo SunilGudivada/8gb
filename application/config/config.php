@@ -513,3 +513,12 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=,';
+
+
+spl_autoload_register(function ($class) {
+    if (substr($class,0,3) !== 'CI_') {
+        if (file_exists($file = APPPATH . 'core/' . $class . '.php')) {
+            include $file;
+        }
+    }
+});

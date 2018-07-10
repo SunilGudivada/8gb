@@ -93,8 +93,7 @@
 
             <?php if($this->session->userdata('type') != 'user' && $this->session->userdata('type') != 'admin'):?>
 
-            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light signin"><i class="mdi-action-perm-identity"></i> SignIn</a></li>
-            <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light signup"> <i class="mdi-social-person-add"> </i>SignUp</a></li>
+            <li><a href="<?= base_url('index.php/auth') ?>" class="waves-effect waves-block waves-light white-text"><i class="mdi-action-perm-identity"></i> SignIn / SignUp</a></li>
 
             <?php endif;?>
 
@@ -132,31 +131,31 @@
 
     </aside>
 
-        <div id="signupmodal" class="modal color-text modalsignup">
-    <div class="modal-content " >
+        <div id="signupmodal" class="modal color-text modalsignup card-gra">
+            <div class="center"><i class="mdi-social-person-add small"></i><div class="center login-form-text "><b>8GB : ClassyAd - SignUp</b></div>
+        </div>
+    <div class="modal-content" >
         <div class="row p-row">
             <div class="col s12 m4 l6">
                 <form class="signupformValidate" id="signupformValidate" method="post" action="" novalidate="novalidate">
                     <div class="">
-                        <br>
-
                         <div class="input-field col s12 p-row">
-                            <label for="uname">Username *</label>
+                            <label for="uname" class="white-text">Username *</label>
                             <input id="uname" name="uname" type="text" data-error=".errorTxt1" required="" aria-required="true">
                             <div class="errorTxt1 ultra-small red-text text-accent-4"></div>
                         </div>
                         <div class="input-field col s12 p-row">
-                            <label for="cemail">E-Mail *</label>
+                            <label for="cemail" class="white-text">E-Mail *</label>
                             <input id="cemail" type="email" name="cemail" data-error=".errorTxt2" required="" aria-required="true">
                             <div class="errorTxt2 ultra-small red-text text-accent-4"></div>
                         </div>
                         <div class="input-field col s12 p-row">
-                            <label for="password">Password *</label>
+                            <label for="password" class="white-text">Password *</label>
                             <input id="password" type="password" name="password" data-error=".errorTxt3" required="" aria-required="true">
                             <div class="errorTxt3 ultra-small red-text text-accent-4"></div>
                         </div>
                         <div class="input-field col s12 p-row">
-                            <label for="cpassword">Confirm Password *</label>
+                            <label for="cpassword" class="white-text">Confirm Password *</label>
                             <input id="cpassword" type="password" name="cpassword" data-error=".errorTxt4" required="" aria-required="true">
                             <div class="errorTxt4 ultra-small red-text text-accent-4"></div>
                         </div>
@@ -181,37 +180,23 @@
               </div>
 
             <div class="center abs-center " id="signupbutton">
-                <div class="col s12 ">
+                <div class="col s12">
                     <br>
                     <br>
                     <br>
                     <div class="row">
                         <div class="col s11 offset-s1">
-                            <a class='login' href="">
-                                <div class="waves-effect waves-light  btn  google" id="my-signin2"> SignUp with Google </div>
-                            </a>
+                            <div class="waves-effect waves-light  btn google g-signup"> SignUp with Google </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  facebook"><a class='login' href="<?php echo  " # "  ; ?>"> SignUp with Facebook</a></div>
+                            <div class="waves-effect waves-light  btn  facebook f-signup"> SignUp with Facebook</div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  linkedin"> SignUp with Linkedin</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  twitter"> SignUp with Twitter</div>
-                        </div>
-                    </div>
-
-                    <div class=" row color-text ultra-small"> Already have account ? Click here to login </div>
+                    <div class=" row color-text ultra-small white-text"> Already have account ? Click here to login</div>
 
                     <div class="row">
                         <div class="col s11 offset-s1">
@@ -225,36 +210,51 @@
 
         </div>
     </div>
+    <div class="modal-footer" style="background-color:#042438;">
+            <div class="white-text">
+                <p class="ultra-small center">
+                    <a href="#!" class="white-text">Conditions of Use</a>&ensp; | &ensp;
+                    <a href="#!" class="white-text"> Privacy Policy</a>&ensp; | &ensp;
+                    <a href="#!" class="white-text">  Help</a> 
+                </p>
+                <p class="ultra-small center">
+                © 2016 - <?php echo date("Y");?> , DSPL - 8GB : ClassyAd
+                </p>
+            </div>
+            </div>
   </div>
 
 
 
 
 
-<div id="signinmodal" class="modal">
+<div id="signinmodal" class="modal card-gra">
+    <div class="center"><i class="mdi-social-people-outline small"></i><div class="center login-form-text "><b>8GB : ClassyAd - SignIn</b></div></div>
     <div class="modal-content ">
+
         <div class="row">
             <div class="col s12 m4 l6" id="signinform">
                 <div class="">
                     <br>
-                    <br>
-                    <br>
                     <form class="signinformValidate" id="signinformValidate" method="post" action="" novalidate="novalidate">
                         <div class="input-field col s12">
-                            <label for="sia">E-Mail *</label>
+                            <label for="sia" class="white-text">E-Mail *</label>
                             <input id="sia" type="email" name="sia" data-error=".ein1">
                             <div class="ein1"></div>
                         </div>
                         <div class="input-field col s12">
-                            <label for="sib">Password *</label>
+                            <label for="sib" class="white-text">Password *</label>
                             <input id="sib" type="password" name="sib" data-error=".ein2">
                             <div class="ein2"></div>
                         </div>
-                        <div class="waves-effect waves-light btn color sesstatus right" id="sibu">SignIn
-                            <i class="mdi-content-send right"></i>
 
+                        <div class="row center">
+                        <div class="waves-effect waves-light btn color sesstatus" id="sibu">Click here to SignIn
+                            <i class="mdi-content-send right"></i>
                         </div>
-                        <div class="preloader-wrapper small active right" id="sibu_loader">
+                    </div>
+                        
+                        <div class="preloader-wrapper small active center" id="sibu_loader">
                             <div class="spinner-layer spinner-red-only">
                                 <div class="circle-clipper left">
                                     <div class="circle"></div>
@@ -267,6 +267,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row center">
+                            <div class="ultra-small">Forgot Password ? <a href="#!" class="white-text"> <b> Click here </b></a> </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -277,40 +281,43 @@
                     <br>
                     <div class="row">
                         <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  google"> SignIn with Google</div>
+                            <div class="waves-effect waves-light  btn  google g-signin"> SignIn with Google</div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  facebook"> SignIn with Facebook</div>
+                            <div class="waves-effect waves-light  btn  facebook f-signin"> SignIn with Facebook</div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  linkedin"> SignIn with Linkedin</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s11 offset-s1">
-                            <div class="waves-effect waves-light  btn  twitter"> SignIn with Twitter</div>
-                        </div>
-                    </div>
-
-                    <div class=" row color-text ultra-small"> Not yet registered ? Click here to register </div>
+                    <div class=" row color-text ultra-small white-text"> Not yet registered ? Click here to register </div>
 
                     <div class="row">
                         <div class="col s11 offset-s1">
                             <div class="waves-effect waves-light  btn  red ascent-4 signin8gb"> SignUp Here</div>
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
+
+
+
         </div>
     </div>
+    <div class="modal-footer" style="background-color:#042438;">
+            <div class="white-text">
+                <p class="ultra-small center">
+                    <a href="#!" class="white-text">Conditions of Use</a>&ensp; | &ensp;
+                    <a href="#!" class="white-text"> Privacy Policy</a>&ensp; | &ensp;
+                    <a href="#!" class="white-text">  Help</a> 
+                </p>
+                <p class="ultra-small center">
+                © 2016 - <?php echo date("Y");?> , DSPL - 8GB : ClassyAd
+                </p>
+            </div>
+            </div>
 </div>
 
 <script type="text/javascript">
@@ -374,6 +381,22 @@
                         $("#sibu_loader").hide();
                     }
             });
+        });
+
+        $('.g-signin').click(function(){
+            location.href="<?= base_url('index.php/hauth/signin/Google') ?>";
+        });
+
+        $('.f-signin').click(function(){
+            location.href="<?= base_url('index.php/hauth/signin/Facebook') ?>";
+        });
+
+        $('.g-signup').click(function(){
+            location.href="<?= base_url('index.php/hauth/signin/Google') ?>";
+        });
+
+        $('.f-signup').click(function(){
+            location.href="<?= base_url('index.php/hauth/signin/Facebook') ?>";
         });
 
     })

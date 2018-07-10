@@ -22,19 +22,48 @@ class Auth_model extends CI_Model {
 
       }else{
 
-      	$sql = "SELECT * from user where ( email = '$email' OR phone = '$email' ) AND pass = '$pass' AND status<2";
-      	$this->load->database();
-       	$query = $this->db->query($sql);
-       	$data = ($query->num_rows() > 0)? true : false;
+        $sql = "SELECT * from user where ( email = '$email' OR phone = '$email' ) AND pass = '$pass' AND status<2";
+        $this->load->database();
+        $query = $this->db->query($sql);
+        $data = ($query->num_rows() > 0)? true : false;
 
-       	$result = $query->result_array();
-       	if($data){
-       		$this->session->id = $result[0]['id'] ;
+        $result = $query->result_array();
+        if($data){
+          $this->session->id = $result[0]['id'] ;
           $this->session->email = $result[0]['email'] ;
           $this->session->name = $result[0]['firstname'].' '.$result[0]['middlename'].' '.$result[0]['lastname'] ;
           $this->session->type = 'user';
-       	}
-       	return $data;
+        }
+        return $data;
+
+       }
+
+
+    }
+
+
+    public function HauthSignin($userid){
+
+      if($email == 'someemail@somedomain.com' && $pass == '1234%a'){
+
+        $this->session->type = 'admin';
+        return true;
+
+      }else{
+
+        $sql = "SELECT * from user where  username = '$userid' AND status<2";
+        $this->load->database();
+        $query = $this->db->query($sql);
+        $data = ($query->num_rows() > 0)? true : false;
+
+        $result = $query->result_array();
+        if($data){
+          $this->session->id = $result[0]['id'] ;
+          $this->session->email = $result[0]['email'] ;
+          $this->session->name = $result[0]['firstname'].' '.$result[0]['middlename'].' '.$result[0]['lastname'] ;
+          $this->session->type = 'user';
+        }
+        return $data;
 
        }
 
@@ -100,6 +129,13 @@ class Auth_model extends CI_Model {
 
     public function updateAdminPassword($j){
       $sql = "UPDATE admin set password = '$j' where userid = 'admin'";
+      $this->load->database();
+      $this->db->query($sql);
+      return true;
+    }
+
+    public function addHauthData($username,$firstname,$lastname,$email,$phone,$pass,$status,$e_status,$oauth){
+      $sql = "INSERT INTO user (username,firstname,lastname,email,phone,pass,status,e_status,oauth)values('$username','$firstname','$lastname','$email','$phone','8gb@1234',$status,$e_status,'$oauth')";
       $this->load->database();
       $this->db->query($sql);
       return true;

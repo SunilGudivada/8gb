@@ -19,7 +19,9 @@ class Advts extends CI_Controller {
 	public function index()
 	{	
 		if($this->session->type!= 'user' ){
-			header('Location:'.base_url(''));
+			$this->load->view('user/pre');
+			$this->load->view('user/auth');
+			$this->load->view('user/post');
 		}else{
 			$this->load->model('Memplan_model');
 			$this->load->model('Subcategory_model');
@@ -396,7 +398,8 @@ class Advts extends CI_Controller {
             $data = array('upload_data' => $this->upload->data(),'advt_id'=>$i);
             $imageName= $data['upload_data']['file_name'];
             $this->load->model('Upload_model');
-            $this->Upload_model->addImage($imageName,$this->session->id,$i);
+            $userid = $this->session->id;
+            $this->Upload_model->addImage($imageName,$userid,$i);
 
             $this->load->library('image_lib');
 	 		$config['image_library'] = 'gd2';
@@ -453,7 +456,8 @@ class Advts extends CI_Controller {
             $data = array('upload_data' => $this->upload->data(),'advt_id'=>$i);
             $imageName= $data['upload_data']['file_name'];
             $this->load->model('Upload_model');
-            $this->Upload_model->addImage($imageName,$this->session->id,$i);
+            $userid=$this->session->id;
+            $this->Upload_model->addImage($imageName,$userid,$i);
 
             $this->load->library('image_lib');
 	 		$config['image_library'] = 'gd2';

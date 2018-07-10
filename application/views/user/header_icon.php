@@ -68,7 +68,7 @@
                         <a href="<?php echo base_url('index.php/advts');?>"><span class="">Advertise</span></a>
                       </li>
                       <li>
-                        <a href="<?php echo base_url('index.php/advts');?>"><span class="">Contact Us</span></a>
+                        <a href="<?php echo base_url('index.php/contactus');?>"><span class="">Contact Us</span></a>
                       </li>
                       
                     </ul>

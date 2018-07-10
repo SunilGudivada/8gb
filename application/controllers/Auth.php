@@ -20,6 +20,12 @@ class Auth extends CI_Controller {
  	* @return array object if the data is validated and verified to be unique.
  	*/
 
+ 	public function index(){
+ 		$this->load->view('user/pre');
+		$this->load->view('user/auth');
+		$this->load->view('user/post');
+ 	}
+
  	public function signup(){
 
  		$uname = $this->input->post('uname');
@@ -78,7 +84,7 @@ class Auth extends CI_Controller {
 	    */
  		if(!$this->Auth_model->check_email($email)){
  			$status = 'failure';
- 			$desc = 'Username already exist';
+ 			$desc = 'Email already exist';
  			header('Content-Type: application/json');
 	    	die(json_encode(array('status'=>$status,'desc' => $desc,'uname'=>$uname,'email'=> $email)));
  		}

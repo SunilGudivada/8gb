@@ -8,14 +8,14 @@ class Transaction_model extends CI_Model {
     }
 
     public function getDetailsPaid(){
-        $sql = "SELECT * from transaction T join addata A on A.transaction_id = T.t_ad_id where T.t_payment_id != ''";
+        $sql = "SELECT * from transaction T join addata A on A.ad_id = T.t_ad_id where T.t_payment_id != ''";
         $this->load->database();
         $query = $this->db->query($sql);
         return $query;
     }
 
     public function getDetailsPending(){
-        $sql = "SELECT * from transaction T join addata A on A.transaction_id = T.t_ad_id where T.t_payment_id = ''";
+        $sql = "SELECT * from transaction T join addata A on A.ad_id = T.t_ad_id where T.t_payment_id = ''";
         $this->load->database();
         $query = $this->db->query($sql);
         return $query;

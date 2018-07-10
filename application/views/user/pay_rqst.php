@@ -24,7 +24,6 @@ $payload = Array(
     'redirect_url' => 'http://8gb.io/classyad/index.php/advts/success/',
     'send_email' => true,
     'webhook' => '',
-    'send_sms' => true,
     'email' => $row->email,
     'allow_repeated_payments' => false
 );
@@ -34,7 +33,7 @@ $response = curl_exec($ch);
 curl_close($ch); 
 
 $json_decode = json_decode($response,true);
-
+echo 'loading.....';
 $payment_request_id = $json_decode['payment_request']['id'];
 $long_url = $json_decode['payment_request']['longurl'];
 // header('Location:'.base_url('index.php/advts/transaction/').$row->ad_id.'/'.$payment_request_id.'/'.$netamt.'/'.$long_url);
